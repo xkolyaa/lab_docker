@@ -317,8 +317,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y build-essential
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY app/ .
-CMD ["python", "main.py"]
+COPY . .
+CMD ["python", "app.py"]
 EOF
 ```
 
@@ -409,39 +409,38 @@ drwxr-xr-x 1 root root 4096 Jun  1 14:08 ..
 cat > docker-compose.yml << 'EOF'
 services:
   app:
-    build: . 
-    container_name: lab_docker_app_container
-    restart: on-failure
+    build: .
+    container_name: lab_docker
     ports:
-      - "5000:5000"
+      - "5001:5000"
     depends_on:
       db:
         condition: service_healthy
     environment:
       - DB_HOST=db
-      - DB_USER=db_user
-      - DB_PASSWORD=secret
-      - DB_NAME=lab_db
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=testdb
 
   db:
-    image: mysql:8.0
-    container_name: mysql_db_container
+    image: mariadb:10.11
+    container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: secret_root_pass
-      MYSQL_DATABASE: lab_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 5s
-      timeout: 2s
-      retries: 10
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   db_data:
@@ -463,103 +462,45 @@ EOF
 
 Команда:
 ```
-cat > app/main.py << 'EOF'
-import os
-import time
-from flask import Flask, request, render_template_string, redirect, url_for
+cat > app/app.py << 'EOF'
+from flask import Flask, request, render_template_string
 import mysql.connector
-from mysql.connector import Error
+import os
 
 app = Flask(__name__)
 
-def get_db_connection():
-    retries = 5
-    while retries > 0:
-        try:
-            connection = mysql.connector.connect(
-                host=os.getenv('DB_HOST', 'db'),
-                database=os.getenv('DB_NAME', 'lab_db'),
-                user=os.getenv('DB_USER', 'db_user'),
-                password=os.getenv('DB_PASSWORD', 'secret')
-            )
-            if connection.is_connected():
-                return connection
-        except Error as e:
-            print(f"Error connecting to MySQL: {e}. Retrying...")
-            time.sleep(2)
-            retries -= 1
-    return None
-
-def init_db():
-    conn = get_db_connection()
-    if conn:
-        cursor = conn.cursor()
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS tasks (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255) NOT NULL
-            );
-        """)
-        conn.commit()
-        cursor.close()
-        conn.close()
-        print("Database initialized successfully.")
+HTML = """
+<h2>Tasks</h2>
+<form method="post">
+  <input name="task" placeholder="Enter task">
+  <button type="submit">Add</button>
+</form>
+<ul>
+{% for t in tasks %}
+  <li>{{ t[1] }}</li>
+{% endfor %}
+</ul>
+"""
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    conn = get_db_connection()
-    if not conn:
-        return "Ошибка подключения к базе данных!", 500
-    
-    cursor = conn.cursor()
-    
+    db = mysql.connector.connect(
+        host=os.environ['DB_HOST'],
+        user=os.environ['DB_USER'],
+        password=os.environ['DB_PASSWORD'],
+        database=os.environ['DB_NAME']
+    )
+    cur = db.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS tasks (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
     if request.method == 'POST':
-        task_name = request.form.get('task')
-        if task_name:
-            try:
-                cursor.execute("INSERT INTO tasks (name) VALUES (%s)", (task_name,))
-                conn.commit()
-            except Error as e:
-                print(f"Failed to insert record: {e}")
-            return redirect(url_for('index'))
-            
-    try:
-        cursor.execute("SELECT name FROM tasks")
-        tasks = [item[0] for item in cursor.fetchall()]
-    except Error as e:
-        print(f"Error fetching tasks: {e}")
-        tasks = []
-        
-    cursor.close()
-    conn.close()
-
-    html = '''
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Lab Docker</title>
-        <meta charset="utf-8">
-    </head>
-    <body style="font-family: Arial; margin: 40px; background-color: #f4f4f9;">
-        <h2>Список задач (Лабораторная Docker)</h2>
-        <form method="POST" style="margin-bottom: 20px;">
-            <input type="text" name="task" placeholder="Новая задача" required style="padding: 8px; width: 250px;">
-            <button type="submit" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; cursor: pointer;">Добавить</button>
-        </form>
-        <h3>Текущие задачи в БД:</h3>
-        <ul>
-        {% for task in tasks %}
-            <li style="margin: 5px 0; font-size: 16px;"><b>{{ task }}</b></li>
-        {% endfor %}
-        </ul>
-    </body>
-    </html>
-    '''
-    return render_template_string(html, tasks=tasks)
+        cur.execute("INSERT INTO tasks (name) VALUES (%s)", (request.form['task'],))
+        db.commit()
+    cur.execute("SELECT * FROM tasks")
+    tasks = cur.fetchall()
+    db.close()
+    return render_template_string(HTML, tasks=tasks)
 
 if __name__ == '__main__':
-    time.sleep(3)
-    init_db()
     app.run(host='0.0.0.0', port=5000)
 EOF
 ```
@@ -576,108 +517,131 @@ docker compose up
 Вывод:
 ```
 [+] down 4/4
- ✔ Container lab_docker_app_container Removed                                                                                                          0.0s
- ✔ Container mysql_db_container       Removed                                                                                                          0.0s
- ✔ Volume lab_docker_db_data          Removed                                                                                                          0.0s
- ✔ Network lab_docker_default         Removed                                                                                                          0.1s
-[+] Building 65.6s (14/14) FINISHED                                                                                                                        
- => [internal] load local bake definitions                                                                                                            0.0s
- => => reading from stdin 540B                                                                                                                        0.0s
- => [internal] load build definition from Dockerfile                                                                                                  0.0s
- => => transferring dockerfile: 247B                                                                                                                  0.0s
- => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.5s
- => [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
- => [internal] load .dockerignore                                                                                                                     0.0s
- => => transferring context: 2B                                                                                                                       0.0s
- => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- => [internal] load build context                                                                                                                     0.0s
- => => transferring context: 235B                                                                                                                     0.0s
- => CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
- => [3/6] RUN apt-get update && apt-get install -y build-essential                                                                                   22.2s
- => [4/6] COPY app/requirements.txt .                                                                                                                 0.1s 
- => [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          8.6s 
- => [6/6] COPY app/ .                                                                                                                                 0.1s 
- => exporting to image                                                                                                                               33.6s 
- => => exporting layers                                                                                                                              22.9s 
- => => exporting manifest sha256:5f8b213476c47a2c065de97b99f4367495a8022f41bc719c8d4e062901a1cacd                                                     0.0s 
- => => exporting config sha256:e31c27221d1d753eabbf9d145e077b93eea48562e6f1b23a794a6ebd83ff62bf                                                       0.0s 
- => => exporting attestation manifest sha256:ebcf6009f8a659c20cd43edbc951738b5c5b4aa79e44b5cbb1af98fae8d81944                                         0.0s 
- => => exporting manifest list sha256:b0b51c0605de584ff02c3126c435ce4d7400b3fbb3128caf53bc023aea3f2563                                                0.0s
- => => naming to docker.io/library/lab_docker-app:latest                                                                                              0.0s
- => => unpacking to docker.io/library/lab_docker-app:latest                                                                                          10.5s
- => resolving provenance for metadata file                                                                                                            0.1s
+ ✔ Container lab_docker       Removed                                                                                                0.1s
+ ✔ Container mysql_db         Removed                                                                                                0.0s
+ ✔ Network lab_docker_default Removed                                                                                                0.1s
+ ✔ Volume lab_docker_db_data  Removed                                                                                                0.0s
+[+] Building 54.6s (14/14) FINISHED                                                                                                      
+ => [internal] load local bake definitions                                                                                          0.0s
+ => => reading from stdin 540B                                                                                                      0.0s
+ => [internal] load build definition from Dockerfile                                                                                0.0s
+ => => transferring dockerfile: 265B                                                                                                0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                  0.6s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                       0.0s
+ => [internal] load .dockerignore                                                                                                   0.0s
+ => => transferring context: 2B                                                                                                     0.0s
+ => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b            0.0s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b            0.0s
+ => [internal] load build context                                                                                                   0.0s
+ => => transferring context: 204B                                                                                                   0.0s
+ => CACHED [2/6] WORKDIR /app                                                                                                       0.0s
+ => [3/6] RUN apt-get update && apt-get install -y build-essential                                                                 19.9s
+ => [4/6] COPY app/requirements.txt .                                                                                               0.1s 
+ => [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                        8.0s 
+ => [6/6] COPY app/ .                                                                                                               0.1s 
+ => exporting to image                                                                                                             25.6s 
+ => => exporting layers                                                                                                            21.7s 
+ => => exporting manifest sha256:2828c1696d18cdfb6abb3424625a565257bd6dd2ecafb29597b98fa3af5c646c                                   0.0s 
+ => => exporting config sha256:6d0a1e49c2adb16a57eac713ab860e7ee33cf3d709f7b73e43e8bff17c944044                                     0.0s 
+ => => exporting attestation manifest sha256:f0a41601aace182fd1e608deb5ee1acbdb68ca6743db546767e693b281f91587                       0.0s 
+ => => exporting manifest list sha256:d301d0dc5f675abd06f3018919c3b1c2d8a6b99b30584f77062e1955d43b6280                              0.0s
+ => => naming to docker.io/library/lab_docker-app:latest                                                                            0.0s
+ => => unpacking to docker.io/library/lab_docker-app:latest                                                                         3.8s
+ => resolving provenance for metadata file                                                                                          0.0s
 [+] build 1/1
- ✔ Image lab_docker-app Built                                                                                                                         65.7s
+ ✔ Image lab_docker-app Built                                                                                                       54.7s
 [+] up 4/4
- ✔ Network lab_docker_default         Created                                                                                                          0.1s
- ✔ Volume lab_docker_db_data          Created                                                                                                          0.0s
- ✔ Container mysql_db_container       Created                                                                                                          0.1s
- ✔ Container lab_docker_app_container Created                                                                                                          0.1s
-Attaching to lab_docker_app_container, mysql_db_container
-Container mysql_db_container Waiting 
-mysql_db_container  | 2026-06-01 14:38:45+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.46-1.el9 started.
-mysql_db_container  | 2026-06-01 14:38:47+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-mysql_db_container  | 2026-06-01 14:38:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.46-1.el9 started.
-mysql_db_container  | 2026-06-01 14:38:48+00:00 [Note] [Entrypoint]: Initializing database files
-mysql_db_container  | 2026-06-01T14:38:48.172674Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
-mysql_db_container  | 2026-06-01T14:38:48.172913Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.46) initializing of server in progress as process 79
-mysql_db_container  | 2026-06-01T14:38:48.185630Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-mysql_db_container  | 2026-06-01T14:38:49.197847Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-mysql_db_container  | 2026-06-01T14:38:50.628136Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
-mysql_db_container  | 2026-06-01 14:38:53+00:00 [Note] [Entrypoint]: Database files initialized
-mysql_db_container  | 2026-06-01 14:38:53+00:00 [Note] [Entrypoint]: Starting temporary server
-mysql_db_container  | 2026-06-01T14:38:54.284489Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
-mysql_db_container  | 2026-06-01T14:38:54.285917Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.46) starting as process 127
-mysql_db_container  | 2026-06-01T14:38:54.305523Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-mysql_db_container  | 2026-06-01T14:38:54.669327Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-mysql_db_container  | 2026-06-01T14:38:54.904845Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-mysql_db_container  | 2026-06-01T14:38:54.905198Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-mysql_db_container  | 2026-06-01T14:38:54.908706Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-mysql_db_container  | 2026-06-01T14:38:54.966839Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
-mysql_db_container  | 2026-06-01T14:38:54.966928Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
-mysql_db_container  | 2026-06-01 14:38:54+00:00 [Note] [Entrypoint]: Temporary server started.
-mysql_db_container  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-Container mysql_db_container Healthy 
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/leapseconds' as time zone. Skipping it.
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/tzdata.zi' as time zone. Skipping it.
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
-mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
-mysql_db_container  | 2026-06-01 14:38:58+00:00 [Note] [Entrypoint]: Creating database lab_db
-mysql_db_container  | 2026-06-01 14:38:58+00:00 [Note] [Entrypoint]: Creating user db_user
-mysql_db_container  | 2026-06-01 14:38:58+00:00 [Note] [Entrypoint]: Giving user db_user access to schema lab_db
-mysql_db_container  | 
-mysql_db_container  | 2026-06-01 14:38:58+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
-mysql_db_container  | 
-mysql_db_container  | 
-mysql_db_container  | 2026-06-01 14:38:58+00:00 [Note] [Entrypoint]: Stopping temporary server
-mysql_db_container  | 2026-06-01T14:38:58.627915Z 15 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.46).
-mysql_db_container  | 2026-06-01T14:38:59.894006Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.46)  MySQL Community Server - GPL.
-mysql_db_container  | 2026-06-01 14:39:00+00:00 [Note] [Entrypoint]: Temporary server stopped
-mysql_db_container  | 
-mysql_db_container  | 2026-06-01 14:39:00+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
-mysql_db_container  | 
-mysql_db_container  | 2026-06-01T14:39:00.892025Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
-mysql_db_container  | 2026-06-01T14:39:00.893909Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.46) starting as process 1
-mysql_db_container  | 2026-06-01T14:39:00.902753Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-mysql_db_container  | 2026-06-01T14:39:03.011482Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-mysql_db_container  | 2026-06-01T14:39:03.216432Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-mysql_db_container  | 2026-06-01T14:39:03.216466Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-mysql_db_container  | 2026-06-01T14:39:03.219298Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-mysql_db_container  | 2026-06-01T14:39:03.250435Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-mysql_db_container  | 2026-06-01T14:39:03.250677Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-lab_docker_app_container  | Error connecting to MySQL: 2003 (HY000): Can't connect to MySQL server on 'db:3306' (111). Retrying...
-lab_docker_app_container  | Error connecting to MySQL: 2003 (HY000): Can't connect to MySQL server on 'db:3306' (111). Retrying...
-lab_docker_app_container  | Database initialized successfully.
-lab_docker_app_container  |  * Serving Flask app 'main'
-lab_docker_app_container  |  * Debug mode: off
-lab_docker_app_container  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
-lab_docker_app_container  |  * Running on all addresses (0.0.0.0)
-lab_docker_app_container  |  * Running on http://127.0.0.1:5000
-lab_docker_app_container  |  * Running on http://172.18.0.3:5000
-lab_docker_app_container  | Press CTRL+C to quit
+ ✔ Network lab_docker_default Created                                                                                                2.1s
+ ✔ Volume lab_docker_db_data  Created                                                                                                0.0s
+ ✔ Container mysql_db         Created                                                                                                3.0s
+ ✔ Container lab_docker       Created                                                                                                0.1s
+Attaching to lab_docker, mysql_db
+mysql_db  | 2026-06-01 20:48:03+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.11.18+maria~ubu2204 started.
+Container mysql_db Waiting 
+mysql_db  | 2026-06-01 20:48:03+00:00 [Warn] [Entrypoint]: /sys/fs/cgroup///memory.pressure not writable, functionality unavailable to MariaDB
+mysql_db  | 2026-06-01 20:48:03+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql_db  | 2026-06-01 20:48:03+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.11.18+maria~ubu2204 started.
+mysql_db  | 2026-06-01 20:48:03+00:00 [Note] [Entrypoint]: Initializing database files
+mysql_db  | 2026-06-01 20:48:03 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+mysql_db  | create_uring failed: falling back to libaio
+mysql_db  | 2026-06-01 20:48:05+00:00 [Note] [Entrypoint]: Database files initialized
+mysql_db  | 2026-06-01 20:48:05+00:00 [Note] [Entrypoint]: Starting temporary server
+mysql_db  | 2026-06-01 20:48:05+00:00 [Note] [Entrypoint]: Waiting for server startup
+mysql_db  | 2026-06-01 20:48:05 0 [Note] Starting MariaDB 10.11.18-MariaDB-ubu2204 source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid kFHJYjl11VYgS/h0/iELOayVquI= as process 89
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Using transactional memory
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Number of transaction pools: 1
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Using AVX512 instructions
+mysql_db  | 2026-06-01 20:48:05 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+mysql_db  | 2026-06-01 20:48:05 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+mysql_db  | create_uring failed: falling back to libaio
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Using Linux native AIO
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Completed initialization of buffer pool
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: End of log at LSN=44894
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: 128 rollback segments are active.
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+mysql_db  | 2026-06-01 20:48:05 0 [Note] InnoDB: log sequence number 44894; transaction id 14
+mysql_db  | 2026-06-01 20:48:05 0 [Note] Plugin 'FEEDBACK' is disabled.
+mysql_db  | 2026-06-01 20:48:05 0 [Note] mariadbd: ready for connections.
+mysql_db  | Version: '10.11.18-MariaDB-ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 0  mariadb.org binary distribution
+mysql_db  | 2026-06-01 20:48:06+00:00 [Note] [Entrypoint]: Temporary server started.
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Creating database testdb
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Creating user user
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Giving user user access to schema testdb
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Securing system users (equivalent to running mysql_secure_installation)
+mysql_db  | 
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
+mysql_db  | 
+mysql_db  | 
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Stopping temporary server
+mysql_db  | 2026-06-01 20:48:07 0 [Note] mariadbd (initiated by: unknown): Normal shutdown
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: FTS optimize thread exiting.
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Starting shutdown...
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Buffer pool(s) dump completed at 260601 20:48:07
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+mysql_db  | 2026-06-01 20:48:07 0 [Note] Shutdown completed; log sequence number 48274; transaction id 23
+mysql_db  | 2026-06-01 20:48:07 0 [Note] mariadbd: Shutdown complete
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: Temporary server stopped
+mysql_db  | 
+mysql_db  | 2026-06-01 20:48:07+00:00 [Note] [Entrypoint]: MariaDB init process done. Ready for start up.
+mysql_db  | 
+mysql_db  | 2026-06-01 20:48:07 0 [Note] Starting MariaDB 10.11.18-MariaDB-ubu2204 source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid kFHJYjl11VYgS/h0/iELOayVquI= as process 1
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Using transactional memory
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Number of transaction pools: 1
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Using AVX512 instructions
+mysql_db  | 2026-06-01 20:48:07 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+mysql_db  | 2026-06-01 20:48:07 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+mysql_db  | create_uring failed: falling back to libaio
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Using Linux native AIO
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: Completed initialization of buffer pool
+mysql_db  | 2026-06-01 20:48:07 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: End of log at LSN=48274
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: 128 rollback segments are active.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: log sequence number 48274; transaction id 24
+mysql_db  | 2026-06-01 20:48:08 0 [Note] Plugin 'FEEDBACK' is disabled.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+mysql_db  | 2026-06-01 20:48:08 0 [Warning] You need to use --log-bin to make --expire-logs-days or --binlog-expire-logs-seconds work.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] Server socket created on IP: '::', port: '3306'.
+mysql_db  | 2026-06-01 20:48:08 0 [Note] InnoDB: Buffer pool(s) load completed at 260601 20:48:08
+mysql_db  | 2026-06-01 20:48:08 0 [Note] mariadbd: ready for connections.
+mysql_db  | Version: '10.11.18-MariaDB-ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+Container mysql_db Healthy 
+lab_docker  |  * Serving Flask app 'app'
+lab_docker  |  * Debug mode: off
+lab_docker  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+lab_docker  |  * Running on all addresses (0.0.0.0)
+lab_docker  |  * Running on http://127.0.0.1:5000
+lab_docker  |  * Running on http://172.18.0.3:5000
+lab_docker  | Press CTRL+C to quit
 ```
 
 ### 5. Фиксация изменений
@@ -710,9 +674,9 @@ To https://github.com/xkolyaa/lab_docker.git
 1. После успешного запуска команды docker compose up интерфейс приложения стал доступен на порту 5000. 
 При первом обращении база данных успешно инициализировалась, отображая пустой список задач:
 
-<img width="1521" height="996" alt="image" src="https://gist.github.com/user-attachments/assets/1a755de6-aa3f-4aaa-8fb2-5cf70bb53fc0" />
+<img width="1477" height="734" alt="image" src="https://gist.github.com/user-attachments/assets/620beb8b-1408-4f0d-81ef-925f6641b665" />
 
 2. Проверка отправки данных пользователем. После ввода новой задачи и нажатия «Добавить», Flask отправило запрос в контейнер MySQL. 
 Данные были успешно записаны, извлечены и выведены на экран:
 
-<img width="1521" height="989" alt="image" src="https://gist.github.com/user-attachments/assets/7c035399-27b4-4249-a007-4f94c20d292c" />
+<img width="1288" height="610" alt="image" src="https://gist.github.com/user-attachments/assets/fcbc678e-bc0f-4436-9186-a5e9cdd9bf5a" />
