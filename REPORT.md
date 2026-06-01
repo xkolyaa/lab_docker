@@ -87,7 +87,10 @@ branch 'main' set up to track 'origin/main'
 Команда:
 ```
 cat > main.py << 'EOF'
+import time
 print("Hello, Docker!")
+while True:
+    time.sleep(10)
 EOF
 
 cat > requirements.txt << 'EOF'
@@ -302,7 +305,6 @@ mysql_db  | 2026-06-01T14:01:20.016586Z 0 [System] [MY-011323] [Server] X Plugin
 mysql_db  | 2026-06-01T14:01:20.016625Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
 Container mysql_db Healthy 
 lab_docker  | Hello, Docker!
-lab_docker exited with code 0
 ```
 
 ## Часть I (Docker)
