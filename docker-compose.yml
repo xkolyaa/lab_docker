@@ -1,37 +1,37 @@
 services:
   app:
-    build: . 
-    container_name: lab_docker_app_container
-    restart: on-failure
+    build: .
+    container_name: lab_docker
     ports:
-      - "5000:5000"
+      - "5001:5000"
     depends_on:
       db:
         condition: service_healthy
     environment:
       - DB_HOST=db
-      - DB_USER=db_user
-      - DB_PASSWORD=secret
-      - DB_NAME=lab_db
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=testdb
 
   db:
-    image: mysql:8.0
-    container_name: mysql_db_container
+    image: mariadb:10.11
+    container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: secret_root_pass
-      MYSQL_DATABASE: lab_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 5s
-      timeout: 2s
-      retries: 10
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
   db_data:
