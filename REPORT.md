@@ -1,902 +1,55 @@
+# Лабораторная работа №?
 
+Данная лабораторная работа посвящена изучению технологии работы с контейнерами.
 
+Репозиторий:https://github.com/xkolyaa/lab_docker
 
+### 1. Установка Docker и Git
 
+Команда:```sudo apt-get update && sudo apt-get install -y git nano docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin```
 
+### 2. Настройка Git и подготовка переменны
 
-<!DOCTYPE html>
-<html
-  lang="en"
-  
-  data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
-  data-a11y-animated-images="system" data-a11y-link-underlines="true"
-  
-  >
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://github.githubassets.com">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
-  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
-  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
-  <link rel="preconnect" href="https://avatars.githubusercontent.com">
-
-  
-
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light-4fded0090af0ad58.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light_high_contrast-cf8e26bc17e62ebc.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-06381ff23d863842.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark_high_contrast-9023e6605402defb.css" /><link data-color-theme="light" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light-4fded0090af0ad58.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-cf8e26bc17e62ebc.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-3a437477a570cc40.css" /><link data-color-theme="light_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind_high_contrast-39b6c209db5491c9.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-3822234d6c03b00b.css" /><link data-color-theme="light_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia_high_contrast-33857254a8064bf7.css" /><link data-color-theme="dark" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark-06381ff23d863842.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-9023e6605402defb.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-37023bf69d8e0e34.css" /><link data-color-theme="dark_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind_high_contrast-486bd43e01a2c0ec.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-838ba2a5070c5b09.css" /><link data-color-theme="dark_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia_high_contrast-2aa7245dc545d61f.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-29ef2eb185e7de1c.css" /><link data-color-theme="dark_dimmed_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed_high_contrast-8eed6b212f10f1b9.css" />
-
-  <style type="text/css">
-    :root {
-      --tab-size-preference: 4;
-    }
-
-    pre, code {
-      tab-size: var(--tab-size-preference);
-    }
-  </style>
-
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-b39ad27f3538ace3.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-a33d805aa3bce2cb.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-9c8f61f9f58ad7b2.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-d92b5e5cec2d5a81.css" />
-  
-
-  
-
-  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["actions_custom_images_storage_billing_ui_visibility","actions_image_version_event","actions_workflow_language_service_allow_concurrency_queue","agent_conflict_resolution","alternate_user_config_repo","arianotify_comprehensive_migration","artifact_ui_v2","billing_discount_threshold_notification","billing_user_level_budgets","billing_user_level_budgets_manage","code_scanning_dfa_degraded_experience_notice","codespaces_prebuild_region_target_update","coding_agent_model_selection","coding_agent_model_selection_all_skus","comment_viewer_copy_raw_markdown","contentful_form_phone_v2","contentful_primer_code_blocks","copilot_agent_snippy","copilot_api_agentic_issue_marshal_yaml","copilot_ask_mode_dropdown","copilot_automation_suggest_tools_enabled","copilot_automations_suggested_automations","copilot_chat_attach_multiple_images","copilot_chat_category_rate_limit_messages","copilot_chat_clear_model_selection_for_default_change","copilot_chat_contextual_suggestions_updated","copilot_chat_enable_tool_call_logs","copilot_chat_input_commands","copilot_chat_models_via_backend","copilot_chat_opening_thread_switch","copilot_chat_prettify_pasted_code","copilot_chat_recommended_models_only","copilot_chat_reduce_quota_checks","copilot_chat_search_bar_redirect","copilot_chat_structured_list_refs","copilot_chat_vision_in_claude","copilot_chat_vision_preview_gate","copilot_cli_install_cta_max_plan","copilot_cloud_agent_always_categorize_models_in_model_picker","copilot_coding_agent_tbb_quota_banner","copilot_custom_copilots","copilot_custom_copilots_feature_preview","copilot_delete_cli_sessions","copilot_diff_explain_conversation_intent","copilot_diff_reference_context","copilot_dotcom_chat_memoize_messages","copilot_duplicate_thread","copilot_extensions_hide_in_dotcom_chat","copilot_extensions_removal_on_marketplace","copilot_features_sql_server_logo","copilot_file_block_ref_matching","copilot_fix_failed_workflows","copilot_ftp_hyperspace_upgrade_prompt","copilot_hide_hovercard","copilot_icebreakers_experiment_dashboard","copilot_icebreakers_experiment_hyperspace","copilot_immersive_code_block_transition_wrap","copilot_immersive_embedded_deferred_payload","copilot_immersive_embedded_draggable","copilot_immersive_embedded_header_button","copilot_immersive_embedded_implicit_references","copilot_immersive_embedded_skip_copilot_api_token_for_dotcom_context","copilot_immersive_file_block_transition_open","copilot_immersive_file_preview_keep_mounted","copilot_immersive_job_result_preview","copilot_immersive_structured_model_picker","copilot_immersive_task_hyperlinking","copilot_immersive_task_within_chat_thread","copilot_mc_cli_resume_any_users_task","copilot_mission_control_agent_filtering","copilot_mission_control_agents_task_list","copilot_mission_control_always_send_integration_id","copilot_mission_control_cli_private_icon","copilot_mission_control_cli_session_status","copilot_mission_control_initial_data_spinner","copilot_mission_control_logs_incremental","copilot_mission_control_task_alive_updates","copilot_mission_control_tasks_repo_filter","copilot_org_policy_page_focus_mode","copilot_redirect_header_button_to_agents","copilot_resource_panel","copilot_scroll_preview_tabs","copilot_share_active_subthread","copilot_spaces_ga","copilot_spaces_individual_policies_ga","copilot_spaces_pagination","copilot_spark_empty_state","copilot_spark_handle_nil_friendly_name","copilot_swe_agent_hide_model_picker_if_only_auto","copilot_swe_agent_pr_comment_model_picker","copilot_swe_agent_pull_request_merged_trigger","copilot_swe_agent_pull_request_opened_trigger","copilot_swe_agent_pull_request_synchronize_trigger","copilot_swe_agent_use_subagents","copilot_task_api_github_rest_style","copilot_token_based_billing","copilot_unconfigured_is_inherited","copilot_usage_metrics_ga","copilot_user_can_upgrade_plan_field","copilot_workbench_slim_line_top_tabs","copilot_workbench_ubb","create_ghas_hard_budgets","custom_instructions_file_references","dashboard_indexeddb_caching","dashboard_lists_max_age_filter","dashboard_universe_2025_feedback_dialog","flex_cta_groups_mvp","global_nav_react","hyperspace_2025_logged_out_batch_1","hyperspace_2025_logged_out_batch_2","hyperspace_2025_logged_out_batch_3","ipm_budget_deep_linking","ipm_global_transactional_message_agents","ipm_global_transactional_message_copilot","ipm_global_transactional_message_issues","ipm_global_transactional_message_prs","ipm_global_transactional_message_repos","ipm_global_transactional_message_spaces","issue_cca_modal_open","issue_cca_multi_assign_modal","issue_cca_visualization","issue_fields_global_search","issues_expanded_file_types","issues_lazy_load_comment_box_suggestions","issues_react_chrome_container_query_fix","issues_search_type_gql","landing_pages_ninetailed","landing_pages_web_vitals_tracking","lifecycle_label_name_updates","low_quality_classifier","marketing_pages_search_explore_provider","memex_default_issue_create_repository","memex_live_update_hovercard","memex_mwl_filter_field_delimiter","memex_remove_deprecated_type_issue","merge_status_header_feedback","notifications_menu_defer_labels","oauth_authorize_clickjacking_protection","octocaptcha_origin_optimization","prs_conversations_react","prs_css_anchor_positioning","repos_contributors_limited_default_range","rules_insights_filter_bar_created","rules_required_reviewers_block_description","sample_network_conn_type","secret_scanning_pattern_alerts_link","security_center_artifact_filters_popover","session_logs_ungroup_reasoning_text","site_copilot_max_plans","site_features_copilot_universe","site_homepage_collaborate_video","spark_prompt_secret_scanning","spark_server_connection_status","suppress_automated_browser_vitals","viewscreen_sandbox","warn_inaccessible_attachments","webp_support","workbench_store_readonly"],"copilotApiOverrideUrl":"https://api.githubcopilot.com"}</script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/high-contrast-cookie-c1770ba1d19e9b2c.js"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-6ca898e3d630d18b.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/fetch-utilities-b82d70fb3b7c15af.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/78205-a328faf42e1fde9e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/85924-1f0f5f61600f9c8e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/34646-b68e58c07f4b3de7.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/environment-d69fe59c085ecc72.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/runtime-helpers-6e561c87b9671d53.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/296-20965d7d607b213c.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/96232-069a02c82c8693ee.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/57131-79aa62319c40af83.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/816-774d14a8cd9b309c.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/37037-cd0fff8f542fa8f3.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/81683-58949462db0c5675.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/64458-4fb01b8fdc13f3ff.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/46740-4421ca06d57312cc.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/30058-4f7b63da3786282e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-1208a11884f03020.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-934e235a82d0d557.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/react-core-e4c170c2bde2bd35.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/react-lib-e93338a8d08b8bb9.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/41260-0b9ff1337b067966.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/79039-f2b81734929d0b15.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/88475-92437d3f8c9a9747.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/2887-d67f71d8e1d3e1d8.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/26533-318ac47648fb7752.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/46477-596c4ee4da73ac9a.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/31606-6f583ce9bde98bfa.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/33232-a61b173cd548f3cb.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/46287-fc23b9847d26823b.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/28000-450a3042fe455862.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/89627-12a64f4329866bd1.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/55682-a358ec7c2f348fcf.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/49029-3a132de206358025.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/99328-82a96596275fbd3e.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-787090bfc35f0bd1.js" defer="defer"></script>
-<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/react-core.3d3963f1b5014f00.module.css" />
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/61272-d797d8a9ce83f9c1.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-be20ba1998b9a752.js" defer="defer"></script>
-  
-  <script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/23784-d3a05eeea5c97b10.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/18233-54d39c5ce7a5714c.js" defer="defer"></script>
-<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/gist-5bd5c07e5707e524.js" defer="defer"></script>
-
-
-  <title>lab_docker.md · GitHub</title>
-
-
-
-  <meta name="route-pattern" content="/:user_id/:gist_id(.:format)" data-turbo-transient>
-  <meta name="route-controller" content="gists_gists" data-turbo-transient>
-  <meta name="route-action" content="show" data-turbo-transient>
-  <meta name="fetch-nonce" content="v2:82cd9220-7da3-9ba8-2c01-d2e561f8e084">
-
-    
-  <meta name="current-catalog-service-hash" content="56253a530ab9027b25719525dcbe6007461a3202218f6f5dfce5a601c121cbcb">
-
-
-  <meta name="request-id" content="9E00:2FD5B4:41827C4:33C31A9:6A1DA4B8" data-pjax-transient="true"/><meta name="html-safe-nonce" content="60f35b665cb963eefcbea0b95b161f082fa01c6ecf68739132817042fc0fb2a3" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiI5RTAwOjJGRDVCNDo0MTgyN0M0OjMzQzMxQTk6NkExREE0QjgiLCJ2aXNpdG9yX2lkIjoiOTE1NTI3NDE1NDE3OTA2MzYwIiwicmVnaW9uX2VkZ2UiOiJmcmEiLCJyZWdpb25fcmVuZGVyIjoiZnJhIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="6cab7fc1c6a82164236a4ffebda18c914ea43d408a69e9cd1103ca9c60bcabb7" data-pjax-transient="true"/>
-
-
-
-
-  <meta name="github-keyboard-shortcuts" content="copilot" data-turbo-transient="true" />
-  
-
-  <meta name="selected-link" value="gist_code" data-turbo-transient>
-  <link rel="assets" href="https://github.githubassets.com/">
-
-    <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I">
-
-<meta name="octolytics-url" content="https://collector.github.com/github/collect" />
-
-
-
-
-
-  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;gist-id&gt;" data-turbo-transient="true" /><meta name="octolytics-location" content="/&lt;user-name&gt;/&lt;gist-id&gt;" data-turbo-transient="true" />
-
-  
-
-
-
-
-    <meta name="user-login" content="">
-
-  
-
-    <meta name="viewport" content="width=device-width">
-
-    
-
-      <meta name="description" content="GitHub Gist: instantly share code, notes, and snippets.">
-
-      <link rel="search" type="application/opensearchdescription+xml" href="/opensearch-gist.xml" title="Gist">
-
-    <link rel="fluid-icon" href="https://gist.github.com/fluidicon.png" title="GitHub">
-    <meta property="fb:app_id" content="1401488693436528">
-    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b" />
-
-      <meta name="twitter:image" content="https://github.githubassets.com/assets/gist-og-image-54fd7dc0713e.png" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="lab_docker.md" /><meta name="twitter:description" content="GitHub Gist: instantly share code, notes, and snippets." />
-  <meta property="og:image" content="https://github.githubassets.com/assets/gist-og-image-54fd7dc0713e.png" /><meta property="og:image:alt" content="GitHub Gist: instantly share code, notes, and snippets." /><meta property="og:site_name" content="Gist" /><meta property="og:type" content="article" /><meta property="og:title" content="lab_docker.md" /><meta property="og:url" content="https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b" /><meta property="og:description" content="GitHub Gist: instantly share code, notes, and snippets." /><meta property="article:author" content="262588213843476" /><meta property="article:publisher" content="262588213843476" />
-  
-
-
-
-
-      <meta name="hostname" content="gist.github.com">
-
-
-
-        <meta name="expected-hostname" content="gist.github.com">
-
-
-  <meta http-equiv="x-pjax-version" content="9524abf7e8504d64024389dc5a3b675e5f0ac4390aa628956929edf557683966" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-csp-version" content="f53effb2a675c4091662fd06c1c9f58a7eef6c9c46c51c4f2ac6ff94d5e4967b" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-css-version" content="75ed22795dd7d05a40521c01884e084fb34d435b5f163faf53a37883ee7981dd" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-js-version" content="401d6f2b163062c8368ca93a875497f6078cdc0ebd83e75ce9f17cb515be22f2" data-turbo-track="reload">
-
-  <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
-
-      <link href="/xkolyaa.atom" rel="alternate" title="atom" type="application/atom+xml">
-
-  <meta name="robots" content="noindex, follow" />
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/gist-f8a4cf76fab6f1cf.css" />
-
-
-
-
-    <meta name="turbo-body-classes" content="logged-out env-production page-responsive">
-  <meta name="disable-turbo" content="false">
-
-
-  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
-
-  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
-
-    <meta name="release" content="d52cfd15110a12ae3c265ce411eac24eeef431f2" data-turbo-track="reload">
-  <meta name="ui-target" content="full">
-
-  <link rel="mask-icon" href="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg" color="#000000">
-  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
-  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg" data-base-href="https://github.githubassets.com/favicons/favicon">
-
-<meta name="theme-color" content="#1e2327">
-<meta name="color-scheme" content="light dark" />
-
-
-
-  </head>
-
-  <body class="logged-out env-production page-responsive" style="word-wrap: break-word;" >
-    <div data-turbo-body class="logged-out env-production page-responsive" style="word-wrap: break-word;" >
-      <div id="__primerPortalRoot__" style="z-index: 1000; position: absolute; width: 100%;" data-turbo-permanent></div>
-      
-
-    <div class="position-relative header-wrapper js-header-wrapper ">
-      <a href="#start-of-content" data-skip-target-assigned="false" class="px-2 tmp-py-4 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
-
-      <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
-    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
-</span>      
-      
-      <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-react-css.44f0e96cdc09f3c0.module.css" />
-<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/keyboard-shortcuts-dialog.6cd80e3134c32137.module.css" />
-
-<react-partial
-  partial-name="keyboard-shortcuts-dialog"
-  data-ssr="false"
-  data-attempted-ssr="false"
-  data-react-profiling="false"
->
-  
-  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"docsUrl":"https://docs.github.com/get-started/accessibility/keyboard-shortcuts"}}</script>
-  <div data-target="react-partial.reactRoot"></div>
-</react-partial>
-
-
-
-
-
-      
-
-            <div class="Header js-details-container Details flex-wrap flex-md-nowrap p-responsive" role="banner" >
-  <div class="Header-item d-none d-md-flex">
-    <a class="Header-link" data-hotkey="g d" aria-label="Gist Homepage " style="--focus-outlineColor: #fff;" href="/">
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github v-align-middle d-inline-block d-md-none">
-    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
-</svg>
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 74 24" version="1.1" width="74" data-view-component="true" class="octicon octicon-logo-github v-align-middle d-none d-md-inline-block">
-    <path d="M8.472 3.088c4.225 0 6.777 1.805 7.592 4.841l-3.785.902c-.462-1.65-1.783-2.552-3.807-2.552-3.015 0-4.643 1.98-4.643 5.743s1.584 5.787 4.555 5.787c2.502 0 4.079-1.406 4.323-3.829H8.076v-3.168h8.45v2.002c0 5.26-3.059 8.186-8.208 8.186C3.213 21 0 17.501 0 12.022c0-5.48 3.279-8.934 8.472-8.934M51.62 15.741c0 1.518.682 2.355 1.98 2.355 1.496 0 2.64-1.387 2.64-3.28V8.304h3.5V20.67h-3.5v-2.09c-.66 1.342-2.244 2.31-3.938 2.31-2.707 0-4.181-1.496-4.181-4.225V8.303h3.499z"></path><path fill-rule="evenodd" d="M65.063 10.57C65.775 9.073 67.38 8.017 69 8.017c3.375 0 5.157 2.333 5.04 6.448.118 4.07-1.73 6.425-5.04 6.425-1.686 0-3.226-.968-3.96-2.355v2.135h-3.477V3.418h3.499zm2.706.374c-1.444 0-2.588 1.408-2.707 3.345v.198c.119 2.002 1.263 3.476 2.707 3.476 1.813 0 2.803-1.342 2.685-3.498.118-2.179-.872-3.521-2.685-3.521"></path><path d="M21.323 20.67h-3.477V8.303h3.477zm7.004-12.367h2.575v2.905h-2.575v5.611c0 .682.308.946.99.946h1.585v2.905h-2.839c-2.31 0-3.212-.99-3.212-3.08v-6.382H22.65V8.303h2.2V5.84l3.477-.814zm7.783-4.885v6.998h6.557V3.418h3.741V20.67h-3.74v-6.91H36.11v6.91h-3.74V3.418zM19.584 3c1.167 0 2.069.902 2.069 2.069a2.04 2.04 0 0 1-2.069 2.068 2.04 2.04 0 0 1-2.068-2.068c0-1.167.902-2.069 2.068-2.069"></path>
-</svg>
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 38 24" version="1.1" width="38" data-view-component="true" class="octicon octicon-logo-gist v-align-middle d-none d-md-inline-block">
-    <path d="M7.05 13.095v-1.5h5.28v8.535c-1.17.555-2.925.96-5.385.96C1.665 21.09 0 17.055 0 12.045S1.695 3 6.945 3c2.43 0 3.96.495 4.92.99v1.575c-1.83-.75-3-1.095-4.92-1.095-3.855 0-5.22 3.315-5.22 7.59s1.365 7.575 5.205 7.575c1.335 0 2.97-.105 3.795-.51v-6.03H7.05Zm16.47 1.035h.045c3.33.3 4.125 1.425 4.125 3.345 0 1.815-1.14 3.615-4.71 3.615-1.125 0-2.745-.285-3.495-.585v-1.41c.705.255 1.83.54 3.495.54 2.43 0 3.09-1.035 3.09-2.13 0-1.065-.33-1.815-2.655-2.01-3.39-.3-4.095-1.5-4.095-3.12 0-1.665 1.08-3.465 4.38-3.465 1.095 0 2.34.135 3.375.585v1.41c-.915-.3-1.83-.54-3.405-.54-2.325 0-2.82.855-2.82 2.01 0 1.035.42 1.56 2.67 1.755Zm12.87-4.995v1.275h-3.63v7.305c0 1.425.795 2.01 2.25 2.01.3 0 .63 0 .915-.045v1.335c-.255.045-.75.075-1.035.075-1.965 0-3.75-.9-3.75-3.195v-7.5H28.8v-.72l2.34-.66V5.85l1.62-.465v3.75h3.63ZM16.635 9.09v9.615c0 .81.285 1.05 1.005 1.05v1.335c-1.71 0-2.58-.705-2.58-2.58V9.09h1.575Zm.375-3.495c0 .66-.51 1.17-1.17 1.17a1.14 1.14 0 0 1-1.155-1.17c0-.66.48-1.17 1.155-1.17s1.17.51 1.17 1.17Z"></path>
-</svg>
-</a>
-
-
-  </div>
-
-  <div class="Header-item d-md-none">
-      <button aria-label="Toggle navigation" aria-expanded="false" type="button" data-view-component="true" class="Header-link js-details-target btn-link">    <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-three-bars">
-    <path d="M3.75 5.25a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Zm0 6a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Zm0 6a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Z"></path>
-</svg>
-</button>  </div>
-
-  <div class="Header-item Header-item--full js-site-search flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 tmp-mr-md-3 tmp-mt-3 tmp-mt-md-0 Details-content--hidden-not-important d-md-flex">
-      <div class="header-search flex-self-stretch flex-md-self-auto mr-0 tmp-mr-md-3 tmp-mb-3 tmp-mb-md-0">
-  <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-turbo="false" action="/search" accept-charset="UTF-8" method="get">
-    <div class="d-flex">
-        <primer-text-field class="FormControl width-full FormControl--fullWidth">
-      <label id="label-91143ba5-0970-4c53-9090-5e76e05dd5bf" class="sr-only FormControl-label" for="q">
-        Search Gists
-</label>    
-  <div class="FormControl-input-wrap">
-    
-      <input placeholder="Search..." aria-describedby="validation-91143ba5-0970-4c53-9090-5e76e05dd5bf" data-target="primer-text-field.inputElement " class="form-control FormControl-input FormControl-medium rounded-right-0" type="text" name="q" id="q" />
-</div>
-      <div class="FormControl-inlineValidation" id="validation-91143ba5-0970-4c53-9090-5e76e05dd5bf" hidden="hidden">
-  <span class="FormControl-inlineValidation--visual" data-target="primer-text-field.validationSuccessIcon" hidden><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-check-circle-fill">
-    <path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path>
-</svg></span>
-  <span class=" FormControl-inlineValidation--visual" data-target="primer-text-field.validationErrorIcon"><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
-    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
-</svg></span>
-  <span></span>
-</div>
-    
-</primer-text-field>
-      <button id="icon-button-0af20e0a-9931-43a8-9e6a-3a8f8fe0effd" aria-labelledby="tooltip-c06b7a56-1d6b-41b4-90d5-4e21a8cfbbfb" type="submit" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium rounded-left-0">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search Button-visual">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-</button><tool-tip id="tooltip-c06b7a56-1d6b-41b4-90d5-4e21a8cfbbfb" for="icon-button-0af20e0a-9931-43a8-9e6a-3a8f8fe0effd" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Search Gists</tool-tip>
-
-    </div>
-</form></div>
-
-
-    <nav aria-label="Global" class="d-flex flex-column flex-md-row flex-self-stretch flex-md-self-auto">
-  <a class="Header-link mr-0 tmp-mr-md-3 py-2 py-md-0 border-top border-md-top-0 border-white-fade" data-ga-click="Header, go to all gists, text:all gists" href="/discover">All gists</a>
-
-  <a class="Header-link mr-0 tmp-mr-md-3 py-2 py-md-0 border-top border-md-top-0 border-white-fade" data-ga-click="Header, go to GitHub, text:Back to GitHub" href="https://github.com">Back to GitHub</a>
-
-    <a class="Header-link d-block d-md-none mr-0 tmp-mr-md-3 py-2 py-md-0 border-top border-md-top-0 border-white-fade" data-ga-click="Header, sign in" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="43407d70a90c025c1a626a05dc81a8ca73e1c0317627723a9391a99be4d6f21b" href="https://gist.github.com/auth/github?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b">
-      Sign in
-</a>
-      <a class="Header-link d-block d-md-none mr-0 tmp-mr-md-3 py-2 py-md-0 border-top border-md-top-0 border-white-fade" data-ga-click="Header, sign up" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9e4b348f44e25cac673ce9748c2d5e4f2f4628a855f48d0598d338b5a43933c8" href="/join?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b&amp;source=header-gist">
-        Sign up
-</a></nav>
-
-  </div>
-
-  <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
-    <a class="Header-link" data-hotkey="g d" aria-label="Gist Homepage " style="--focus-outlineColor: #fff;" href="/">
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github v-align-middle d-inline-block d-md-none">
-    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
-</svg>
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 74 24" version="1.1" width="74" data-view-component="true" class="octicon octicon-logo-github v-align-middle d-none d-md-inline-block">
-    <path d="M8.472 3.088c4.225 0 6.777 1.805 7.592 4.841l-3.785.902c-.462-1.65-1.783-2.552-3.807-2.552-3.015 0-4.643 1.98-4.643 5.743s1.584 5.787 4.555 5.787c2.502 0 4.079-1.406 4.323-3.829H8.076v-3.168h8.45v2.002c0 5.26-3.059 8.186-8.208 8.186C3.213 21 0 17.501 0 12.022c0-5.48 3.279-8.934 8.472-8.934M51.62 15.741c0 1.518.682 2.355 1.98 2.355 1.496 0 2.64-1.387 2.64-3.28V8.304h3.5V20.67h-3.5v-2.09c-.66 1.342-2.244 2.31-3.938 2.31-2.707 0-4.181-1.496-4.181-4.225V8.303h3.499z"></path><path fill-rule="evenodd" d="M65.063 10.57C65.775 9.073 67.38 8.017 69 8.017c3.375 0 5.157 2.333 5.04 6.448.118 4.07-1.73 6.425-5.04 6.425-1.686 0-3.226-.968-3.96-2.355v2.135h-3.477V3.418h3.499zm2.706.374c-1.444 0-2.588 1.408-2.707 3.345v.198c.119 2.002 1.263 3.476 2.707 3.476 1.813 0 2.803-1.342 2.685-3.498.118-2.179-.872-3.521-2.685-3.521"></path><path d="M21.323 20.67h-3.477V8.303h3.477zm7.004-12.367h2.575v2.905h-2.575v5.611c0 .682.308.946.99.946h1.585v2.905h-2.839c-2.31 0-3.212-.99-3.212-3.08v-6.382H22.65V8.303h2.2V5.84l3.477-.814zm7.783-4.885v6.998h6.557V3.418h3.741V20.67h-3.74v-6.91H36.11v6.91h-3.74V3.418zM19.584 3c1.167 0 2.069.902 2.069 2.069a2.04 2.04 0 0 1-2.069 2.068 2.04 2.04 0 0 1-2.068-2.068c0-1.167.902-2.069 2.068-2.069"></path>
-</svg>
-  <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 38 24" version="1.1" width="38" data-view-component="true" class="octicon octicon-logo-gist v-align-middle d-none d-md-inline-block">
-    <path d="M7.05 13.095v-1.5h5.28v8.535c-1.17.555-2.925.96-5.385.96C1.665 21.09 0 17.055 0 12.045S1.695 3 6.945 3c2.43 0 3.96.495 4.92.99v1.575c-1.83-.75-3-1.095-4.92-1.095-3.855 0-5.22 3.315-5.22 7.59s1.365 7.575 5.205 7.575c1.335 0 2.97-.105 3.795-.51v-6.03H7.05Zm16.47 1.035h.045c3.33.3 4.125 1.425 4.125 3.345 0 1.815-1.14 3.615-4.71 3.615-1.125 0-2.745-.285-3.495-.585v-1.41c.705.255 1.83.54 3.495.54 2.43 0 3.09-1.035 3.09-2.13 0-1.065-.33-1.815-2.655-2.01-3.39-.3-4.095-1.5-4.095-3.12 0-1.665 1.08-3.465 4.38-3.465 1.095 0 2.34.135 3.375.585v1.41c-.915-.3-1.83-.54-3.405-.54-2.325 0-2.82.855-2.82 2.01 0 1.035.42 1.56 2.67 1.755Zm12.87-4.995v1.275h-3.63v7.305c0 1.425.795 2.01 2.25 2.01.3 0 .63 0 .915-.045v1.335c-.255.045-.75.075-1.035.075-1.965 0-3.75-.9-3.75-3.195v-7.5H28.8v-.72l2.34-.66V5.85l1.62-.465v3.75h3.63ZM16.635 9.09v9.615c0 .81.285 1.05 1.005 1.05v1.335c-1.71 0-2.58-.705-2.58-2.58V9.09h1.575Zm.375-3.495c0 .66-.51 1.17-1.17 1.17a1.14 1.14 0 0 1-1.155-1.17c0-.66.48-1.17 1.155-1.17s1.17.51 1.17 1.17Z"></path>
-</svg>
-</a>
-
-
-  </div>
-
-    <div class="Header-item f4 mr-0" role="navigation" aria-label="Sign in or sign up">
-      <a class="Header-link no-underline tmp-mr-3" data-ga-click="Header, sign in" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="43407d70a90c025c1a626a05dc81a8ca73e1c0317627723a9391a99be4d6f21b" href="https://gist.github.com/auth/github?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b">
-        Sign&nbsp;in
-</a>        <a class="Header-link d-inline-block no-underline border color-border-default rounded px-2 py-1" data-ga-click="Header, sign up" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9e4b348f44e25cac673ce9748c2d5e4f2f4628a855f48d0598d338b5a43933c8" href="/join?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b&amp;source=header-gist">
-          Sign&nbsp;up
-</a>    </div>
-</div>
-
-
-
-      <div hidden="hidden" data-view-component="true" class="js-stale-session-flash stale-session-flash flash flash-warn flash-full">
-  
-        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-        <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-        <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-        <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-
-    <button id="icon-button-59e3b635-2b1b-4697-9541-22b39c04ba87" aria-labelledby="tooltip-f6b4e2e8-73b8-45f6-acc1-6c6ec6b0015f" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-</button><tool-tip id="tooltip-f6b4e2e8-73b8-45f6-acc1-6c6ec6b0015f" for="icon-button-59e3b635-2b1b-4697-9541-22b39c04ba87" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
-
-
-  
-</div>
-    </div>
-
-  <div id="start-of-content" class="show-on-focus"></div>
-
-
-
-
-
-
-
-
-    <div id="js-flash-container" class="flash-container" data-turbo-replace>
-
-
-
-
-  <template class="js-flash-template">
-    
-<div class="flash flash-full   {{ className }}">
-  <div >
-    <button autofocus class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-    </button>
-    <div aria-atomic="true" role="alert" class="js-flash-alert">
-      
-      <div>{{ message }}</div>
-
-    </div>
-  </div>
-</div>
-  </template>
-</div>
-
-
-    
-
-
-
-
-
-
-  <div
-    class="application-main "
-    data-commit-hovercards-enabled
-    data-discussion-hovercards-enabled
-    data-issue-and-pr-hovercards-enabled
-    data-project-hovercards-enabled
-  >
-        <div itemscope itemtype="http://schema.org/Code">
-    <main id="gist-pjax-container">
-      
-
-  <div class="gist-detail-intro gist-banner tmp-pb-3">
-    <div class="text-center container-lg tmp-px-3">
-      <p class="lead">
-        Instantly share code, notes, and snippets.
-      </p>
-    </div>
-  </div>
-
-
-<div class="gisthead pagehead pb-0 tmp-pt-3 tmp-mb-4">
-  <div class="px-0">
-    
-  
-<div class="tmp-mb-3 d-flex tmp-px-3 tmp-px-md-3 tmp-px-lg-5">
-  <div class="flex-auto min-width-0 width-fit tmp-mr-3">
-    <div class="d-flex">
-      <div class="d-none d-md-block">
-        <a class="mr-2 flex-shrink-0" data-hovercard-type="user" data-hovercard-url="/users/xkolyaa/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/xkolyaa"><img class="avatar avatar-user" src="https://avatars.githubusercontent.com/u/264804767?s=64&amp;v=4" width="32" height="32" alt="@xkolyaa" /></a>
-      </div>
-      <div class="d-flex flex-column width-full">
-        <div class="d-flex flex-row width-full">
-          <h1 class="wb-break-word f3 text-normal mb-md-0 mb-1">
-            <span class="author"><a data-hovercard-type="user" data-hovercard-url="/users/xkolyaa/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/xkolyaa">xkolyaa</a></span><!--
-                --><span class="mx-1 color-fg-muted">/</span><!--
-                --><strong itemprop="name" class="css-truncate-target mr-1" style="max-width: 410px"><a href="/xkolyaa/088678af8cd6d7d55103791b700adb5b">lab_docker.md</a></strong>
-              <span title="Only those with the link can see this gist." data-view-component="true" class="Label v-align-middle">
-                Secret
-</span>          </h1>
-        </div>
-
-        <div class="note m-0">
-          Last active
-          <relative-time tense="past" datetime="2026-06-01T14:56:57Z" data-view-component="true">June 1, 2026 14:56</relative-time>
-        </div>
-      </div>
-    </div>
-  </div>
-  <ul class="d-md-flex pagehead-actions float-none mr-2">
-  </ul>
-  <div class="d-inline-block d-md-none ml-auto">
-    <action-menu data-select-variant="none" data-view-component="true" class="flex-self-start ml-auto tmp-ml-auto d-inline-block">
-  <focus-group direction="vertical" mnemonics retain>
-    <button id="gist_options-button" popovertarget="gist_options-overlay" aria-controls="gist_options-list" aria-haspopup="true" aria-labelledby="tooltip-a1846743-0d71-4fc6-910d-1cfd509fe3e9" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal Button-visual">
-    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-</svg>
-</button><tool-tip id="tooltip-a1846743-0d71-4fc6-910d-1cfd509fe3e9" for="gist_options-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Show Gist options</tool-tip>
-
-
-<anchored-position data-target="action-menu.overlay" id="gist_options-overlay" anchor="gist_options-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
-  <div data-view-component="true" class="Overlay Overlay--size-auto">
-    
-      <div data-view-component="true" class="Overlay-body Overlay-body--paddingNone">          <action-list>
-  <div data-view-component="true">
-    <ul aria-labelledby="gist_options-button" id="gist_options-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
-        <li rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;DOWNLOAD_ZIP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9090df4e2a0d5ff350aff99597952a12d1afab1e970db676b80550e673cb095e" data-ga-click="Gist, download zip, location:gist overview" data-targets="action-list.items" data-item-id="download_from_gist_options" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <a tabindex="-1" id="item-e49f9bd5-5d4a-42c4-a076-f3d4c4736122" href="/xkolyaa/088678af8cd6d7d55103791b700adb5b/archive/eb80ff7f0355580c26e37c7046928dfc4cdfb826.zip" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-download">
-    <path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"></path><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Download ZIP
-</span>      
-</a>
-  
-</li>
-</ul>    
-</div></action-list>
-
-
-</div>
-      
-</div></anchored-position>  </focus-group>
-</action-menu>  </div>
-  <ul class="d-md-flex d-none pagehead-actions float-none">
-
-
-      <li>
-          <a id="gist-star-button" href="/login?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist star button&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="a795f9129e2eff1fcc6a13a47a50f6c5508eaa67690e0dfab87f808d844e36da" aria-label="You must be signed in to star a gist" data-view-component="true" class="btn-with-count Button--secondary Button--small Button">  <span class="Button-content">
-      <span class="Button-visual Button-leadingVisual">
-        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
-    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
-</svg>
-      </span>
-    <span class="Button-label">Star</span>
-      <span class="Button-visual Button-trailingVisual">
-          <span class="d-flex" aria-hidden="true"><span title="0" data-view-component="true" class="Counter">0</span></span>
-          <span class="sr-only">(<span title="0" data-view-component="true" class="Counter">0</span>)</span>
-      </span>
-  </span>
-</a><tool-tip id="tooltip-bbbdf1bf-5f59-43f1-8f30-3ea33caaf4af" for="gist-star-button" popover="manual" data-direction="n" data-type="description" data-view-component="true" class="sr-only position-absolute">You must be signed in to star a gist</tool-tip>
-
-      </li>
-        <li>
-            <a id="gist-fork-button" href="/login?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist fork button&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2147d3ffbca943dd82c72e197ffeafdb8dba47e2b4d9867385eb6d250cd89d1b" aria-label="You must be signed in to fork a gist" data-view-component="true" class="btn-with-count Button--secondary Button--small Button">  <span class="Button-content">
-      <span class="Button-visual Button-leadingVisual">
-        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked">
-    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
-</svg>
-      </span>
-    <span class="Button-label">Fork</span>
-      <span class="Button-visual Button-trailingVisual">
-          <span class="d-flex" aria-hidden="true"><span title="0" data-view-component="true" class="Counter">0</span></span>
-          <span class="sr-only">(<span title="0" data-view-component="true" class="Counter">0</span>)</span>
-      </span>
-  </span>
-</a><tool-tip id="tooltip-1845140f-943b-41bf-ae1f-2088a56618b4" for="gist-fork-button" popover="manual" data-direction="n" data-type="description" data-view-component="true" class="sr-only position-absolute">You must be signed in to fork a gist</tool-tip>
-
-        </li>
-  </ul>
-</div>
-
-  <ul class="d-flex d-md-none tmp-px-3 mb-2 pagehead-actions float-none" >
-    <li>
-      
-<div data-view-component="true" class="flex-items-center d-inline-flex">
-    <select-panel data-menu-input="gist-share-url-sized-down" id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113" anchor-align="start" anchor-side="outside-bottom" data-menu-input="gist-share-url-sized-down" data-select-variant="single" data-fetch-strategy="local" data-open-on-load="false" data-dynamic-label="true" data-view-component="true" class="flex-shrink-0">
-  <dialog-helper>
-    <button id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-button" aria-controls="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-dialog" aria-haspopup="dialog" aria-expanded="false" type="button" data-view-component="true" class="rounded-right-0 border-right-0 Button--secondary Button--small Button">  <span class="Button-content">
-    <span class="Button-label">Embed</span>
-  </span>
-    <span class="Button-visual Button-trailingAction">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
-    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
-</svg>
-    </span>
-</button>
-
-    <dialog id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-dialog" aria-labelledby="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
-      <div data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title " id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-dialog-title">
-        Select an option
-      </h1>
-        
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-dialog" aria-label="Close" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-  
-</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
-        <focus-group direction="vertical" mnemonics retain>
-          <live-region data-target="select-panel.liveRegion"></live-region>
-          <div data-fetch-strategy="local" data-target="select-panel.list" data-view-component="true">
-            <div id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-body">
-                <action-list>
-  <div data-view-component="true">
-    <ul aria-label="Select an option options" id="select-panel-7b56ab05-ff9d-4bc0-8238-a7064d79c113-list" role="listbox" data-view-component="true" class="ActionListWrap p-2 tmp-p-2">
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="&lt;script src=&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&quot;&gt;&lt;/script&gt;" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;EMBED&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7dd76f83c194c0de640178b819de2c2582d42cce31149bfc2fea016ce5522982" id="item-73e61d91-495f-4830-8df2-b4154eca22cb" type="button" role="option" aria-selected="true" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-           Embed
-</span>      <span data-view-component="true" class="ActionListItem-description">Embed this gist in your website.</span>
-</span></button>
-  
-</li>
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;SHARE&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="4b19e6322ce96bfb872d2eaa5c999272b1a11f8c2faaa8e2639b3542dc2fcc31" id="item-07913732-64cf-4d78-b197-7062cd2dc605" type="button" role="option" aria-selected="false" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-           Share
-</span>      <span data-view-component="true" class="ActionListItem-description">Copy sharable link for this gist.</span>
-</span></button>
-  
-</li>
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="https://gist.github.com/088678af8cd6d7d55103791b700adb5b.git" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_HTTPS&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2e1c5e36e34d805619a063cd872d1360f50dc0cd9af896e7df49c5575e662d88" id="item-f32cd599-f570-41c3-85e9-7f7e6ca33809" type="button" role="option" aria-selected="false" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-          Clone via HTTPS
-</span>      <span data-view-component="true" class="ActionListItem-description">Clone using the web URL.</span>
-</span></button>
-  
-</li>
-</ul>    
-</div></action-list>
-
-            </div>
-            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden>
-              <h2 class="v-align-middle m-3 f5">No results found</h2>
-            </div>
-</div>        </focus-group>
-</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">        <a target="_blank" rel="noopener noreferrer" href="https://docs.github.com/articles/which-remote-url-should-i-use">Learn more about clone URLs</a>
-</div>
-</dialog>  </dialog-helper>
-</select-panel>    <primer-text-field class="FormControl width-full FormControl--fullWidth">
-      <label for="gist-share-url-sized-down" id="label-17c57c57-6854-47c4-9a5b-bace102b26c1" class="sr-only FormControl-label">
-        Clone this repository at &amp;lt;script src=&amp;quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-</label>    
-  <div class="FormControl-input-wrap FormControl-input-wrap--small">
-    
-      <input id="gist-share-url-sized-down" aria-label="Clone this repository at &amp;lt;script src=&amp;quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;" value="&lt;script src=&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&quot;&gt;&lt;/script&gt;" readonly="readonly" data-autoselect="true" data-target="primer-text-field.inputElement " aria-describedby="validation-17c57c57-6854-47c4-9a5b-bace102b26c1" class="form-control FormControl-monospace FormControl-input FormControl-small rounded-left-0 rounded-right-0 border-right-0" type="text" name="gist-share-url-sized-down" />
-</div>
-      <div class="FormControl-inlineValidation" id="validation-17c57c57-6854-47c4-9a5b-bace102b26c1" hidden="hidden">
-  <span class="FormControl-inlineValidation--visual" data-target="primer-text-field.validationSuccessIcon" hidden><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-check-circle-fill">
-    <path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path>
-</svg></span>
-  <span class=" FormControl-inlineValidation--visual" data-target="primer-text-field.validationErrorIcon"><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
-    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
-</svg></span>
-  <span></span>
-</div>
-    
-</primer-text-field>
-  <span data-view-component="true">
-  <clipboard-copy id="clipboard-button" aria-label="Copy" for="gist-share-url-sized-down" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="17b1cb10dbda2e3d205771289ea89f382db9393edaf4580c5ad24b894efe3026" type="button" data-view-component="true" class="rounded-left-0 Button--secondary Button--small Button">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg style="display: none;" aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check color-fg-success">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-</clipboard-copy>  <div aria-live="polite" aria-atomic="true" class="sr-only" data-clipboard-copy-feedback></div>
-</span>
-
-</div>
-    </li>
-    <li>
-        <button href="https://desktop.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;OPEN_IN_DESKTOP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="34eed1322bd2e6b6a610d04b9680d519086ee5413ca4ed22051074953df63e10" data-platforms="windows,mac" id="icon-button-5ba7e704-c973-459a-9d36-bcc17f39bbc7" aria-labelledby="tooltip-cc72c248-2397-4d7c-bb6f-dd78e1e60781" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small js-remove-unless-platform">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-desktop-download Button-visual">
-    <path d="m4.927 5.427 2.896 2.896a.25.25 0 0 0 .354 0l2.896-2.896A.25.25 0 0 0 10.896 5H8.75V.75a.75.75 0 1 0-1.5 0V5H5.104a.25.25 0 0 0-.177.427Z"></path><path d="M1.573 2.573a.25.25 0 0 0-.073.177v7.5a.25.25 0 0 0 .25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-3a.75.75 0 1 1 0-1.5h3A1.75 1.75 0 0 1 16 2.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.75.75 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5A1.75 1.75 0 0 1 1.75 1h3a.75.75 0 0 1 0 1.5h-3a.25.25 0 0 0-.177.073ZM6.982 12a5.72 5.72 0 0 1-.765 2.5h3.566a5.72 5.72 0 0 1-.765-2.5H6.982Z"></path>
-</svg>
-</button><tool-tip id="tooltip-cc72c248-2397-4d7c-bb6f-dd78e1e60781" for="icon-button-5ba7e704-c973-459a-9d36-bcc17f39bbc7" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Save xkolyaa/088678af8cd6d7d55103791b700adb5b to your computer and use it in GitHub Desktop.</tool-tip>
-
-
-    </li>
-  </ul>
-
-<div class="d-flex flex-md-row flex-column px-0 tmp-pr-md-3 tmp-px-lg-5">
-  <div class="flex-md-order-1 flex-order-2 flex-auto">
-    <nav class="UnderlineNav box-shadow-none tmp-px-3 tmp-px-lg-0"
-     aria-label="Gist"
-     data-pjax="#gist-pjax-container">
-
-  <div class="UnderlineNav-body">
-    <a class="js-selected-navigation-item selected UnderlineNav-item" data-pjax="true" data-hotkey="g c" aria-current="page" data-selected-links="gist_code /xkolyaa/088678af8cd6d7d55103791b700adb5b" href="/xkolyaa/088678af8cd6d7d55103791b700adb5b">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon">
-    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-      Code
-</a>
-      <a class="js-selected-navigation-item UnderlineNav-item" data-pjax="true" data-hotkey="g r" data-selected-links="gist_revisions /xkolyaa/088678af8cd6d7d55103791b700adb5b/revisions" href="/xkolyaa/088678af8cd6d7d55103791b700adb5b/revisions">
-        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-commit UnderlineNav-octicon">
-    <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
-</svg>
-        Revisions
-        <span title="3" data-view-component="true" class="Counter">3</span>
-</a>
-
-  </div>
-</nav>
-
-  </div>
-
-  <div class="d-md-flex d-none flex-items-center flex-md-order-2 flex-order-1" data-multiple>
-    
-<div data-view-component="true" class="flex-items-center d-inline-flex">
-    <select-panel data-menu-input="gist-share-url-original" id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7" anchor-align="start" anchor-side="outside-bottom" data-menu-input="gist-share-url-original" data-select-variant="single" data-fetch-strategy="local" data-open-on-load="false" data-dynamic-label="true" data-view-component="true" class="flex-shrink-0">
-  <dialog-helper>
-    <button id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-button" aria-controls="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-dialog" aria-haspopup="dialog" aria-expanded="false" type="button" data-view-component="true" class="rounded-right-0 border-right-0 Button--secondary Button--small Button">  <span class="Button-content">
-    <span class="Button-label">Embed</span>
-  </span>
-    <span class="Button-visual Button-trailingAction">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
-    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
-</svg>
-    </span>
-</button>
-
-    <dialog id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-dialog" aria-labelledby="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
-      <div data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title " id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-dialog-title">
-        Select an option
-      </h1>
-        
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-dialog" aria-label="Close" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-  
-</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
-        <focus-group direction="vertical" mnemonics retain>
-          <live-region data-target="select-panel.liveRegion"></live-region>
-          <div data-fetch-strategy="local" data-target="select-panel.list" data-view-component="true">
-            <div id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-body">
-                <action-list>
-  <div data-view-component="true">
-    <ul aria-label="Select an option options" id="select-panel-0b3d3e73-32f1-44c0-9749-d88bab2d6ad7-list" role="listbox" data-view-component="true" class="ActionListWrap p-2 tmp-p-2">
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="&lt;script src=&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&quot;&gt;&lt;/script&gt;" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;EMBED&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7dd76f83c194c0de640178b819de2c2582d42cce31149bfc2fea016ce5522982" id="item-65a6a10c-d113-4243-be22-14a2ec50e09d" type="button" role="option" aria-selected="true" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-           Embed
-</span>      <span data-view-component="true" class="ActionListItem-description">Embed this gist in your website.</span>
-</span></button>
-  
-</li>
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;SHARE&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="4b19e6322ce96bfb872d2eaa5c999272b1a11f8c2faaa8e2639b3542dc2fcc31" id="item-283ffc10-92c0-4703-8c5d-da3d59fb0a0b" type="button" role="option" aria-selected="false" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-           Share
-</span>      <span data-view-component="true" class="ActionListItem-description">Copy sharable link for this gist.</span>
-</span></button>
-  
-</li>
-        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    
-    <button value="https://gist.github.com/088678af8cd6d7d55103791b700adb5b.git" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_HTTPS&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2e1c5e36e34d805619a063cd872d1360f50dc0cd9af896e7df49c5575e662d88" id="item-cf9b46cf-1fd3-4a69-8e67-aeb5c4a1e947" type="button" role="option" aria-selected="false" data-view-component="true" class="ActionListContent">
-        <span class="ActionListItem-visual ActionListItem-action--leading">
-          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check ActionListItem-singleSelectCheckmark">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-        </span>
-      <span data-view-component="true" class="ActionListItem-descriptionWrap">
-        <span data-view-component="true" class="ActionListItem-label">
-          Clone via HTTPS
-</span>      <span data-view-component="true" class="ActionListItem-description">Clone using the web URL.</span>
-</span></button>
-  
-</li>
-</ul>    
-</div></action-list>
-
-            </div>
-            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden>
-              <h2 class="v-align-middle m-3 f5">No results found</h2>
-            </div>
-</div>        </focus-group>
-</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">        <a target="_blank" rel="noopener noreferrer" href="https://docs.github.com/articles/which-remote-url-should-i-use">Learn more about clone URLs</a>
-</div>
-</dialog>  </dialog-helper>
-</select-panel>    <primer-text-field class="FormControl width-full FormControl--fullWidth">
-      <label for="gist-share-url-original" id="label-b681be1e-d81d-4565-8953-12b4d0d8e6aa" class="sr-only FormControl-label">
-        Clone this repository at &amp;lt;script src=&amp;quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-</label>    
-  <div class="FormControl-input-wrap FormControl-input-wrap--small">
-    
-      <input id="gist-share-url-original" aria-label="Clone this repository at &amp;lt;script src=&amp;quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;" value="&lt;script src=&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b.js&quot;&gt;&lt;/script&gt;" readonly="readonly" data-autoselect="true" data-target="primer-text-field.inputElement " aria-describedby="validation-b681be1e-d81d-4565-8953-12b4d0d8e6aa" class="form-control FormControl-monospace FormControl-input FormControl-small rounded-left-0 rounded-right-0 border-right-0" type="text" name="gist-share-url-original" />
-</div>
-      <div class="FormControl-inlineValidation" id="validation-b681be1e-d81d-4565-8953-12b4d0d8e6aa" hidden="hidden">
-  <span class="FormControl-inlineValidation--visual" data-target="primer-text-field.validationSuccessIcon" hidden><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-check-circle-fill">
-    <path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path>
-</svg></span>
-  <span class=" FormControl-inlineValidation--visual" data-target="primer-text-field.validationErrorIcon"><svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
-    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
-</svg></span>
-  <span></span>
-</div>
-    
-</primer-text-field>
-  <span data-view-component="true">
-  <clipboard-copy id="clipboard-button" aria-label="Copy" for="gist-share-url-original" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="17b1cb10dbda2e3d205771289ea89f382db9393edaf4580c5ad24b894efe3026" type="button" data-view-component="true" class="rounded-left-0 Button--secondary Button--small Button">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg style="display: none;" aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check color-fg-success">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-</clipboard-copy>  <div aria-live="polite" aria-atomic="true" class="sr-only" data-clipboard-copy-feedback></div>
-</span>
-
-</div>
-
-    <div class="ml-2">
-        <button href="https://desktop.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;OPEN_IN_DESKTOP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="34eed1322bd2e6b6a610d04b9680d519086ee5413ca4ed22051074953df63e10" data-platforms="windows,mac" id="icon-button-82f17cc5-9dd3-464b-8f7b-0ec927a5db97" aria-labelledby="tooltip-92c9ffce-348d-4510-98c7-0987082ffcda" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small js-remove-unless-platform">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-desktop-download Button-visual">
-    <path d="m4.927 5.427 2.896 2.896a.25.25 0 0 0 .354 0l2.896-2.896A.25.25 0 0 0 10.896 5H8.75V.75a.75.75 0 1 0-1.5 0V5H5.104a.25.25 0 0 0-.177.427Z"></path><path d="M1.573 2.573a.25.25 0 0 0-.073.177v7.5a.25.25 0 0 0 .25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-3a.75.75 0 1 1 0-1.5h3A1.75 1.75 0 0 1 16 2.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.75.75 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5A1.75 1.75 0 0 1 1.75 1h3a.75.75 0 0 1 0 1.5h-3a.25.25 0 0 0-.177.073ZM6.982 12a5.72 5.72 0 0 1-.765 2.5h3.566a5.72 5.72 0 0 1-.765-2.5H6.982Z"></path>
-</svg>
-</button><tool-tip id="tooltip-92c9ffce-348d-4510-98c7-0987082ffcda" for="icon-button-82f17cc5-9dd3-464b-8f7b-0ec927a5db97" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Save xkolyaa/088678af8cd6d7d55103791b700adb5b to your computer and use it in GitHub Desktop.</tool-tip>
-
-
-    </div>
-
-    <div class="ml-2">
-      <a class="btn btn-sm" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;DOWNLOAD_ZIP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:149335603,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="9090df4e2a0d5ff350aff99597952a12d1afab1e970db676b80550e673cb095e" data-ga-click="Gist, download zip, location:gist overview" href="/xkolyaa/088678af8cd6d7d55103791b700adb5b/archive/eb80ff7f0355580c26e37c7046928dfc4cdfb826.zip">Download ZIP</a>
-    </div>
-  </div>
-</div>
-
-
-  </div>
-</div>
-
-<div class="container-lg tmp-px-3">
-  <div class="repository-content gist-content" >
-    
-  <div>
-    
-        
-<div class="js-gist-file-update-container js-task-list-container">
-      <div id="file-lab_docker-md" class="file my-2">
-      <div class="file-header d-flex flex-md-items-center flex-items-start">
-        <div class="file-actions flex-order-2 pt-0">
-          <a href="/xkolyaa/088678af8cd6d7d55103791b700adb5b/raw/eb80ff7f0355580c26e37c7046928dfc4cdfb826/lab_docker.md" data-view-component="true" class="Button--secondary Button--small Button">  <span class="Button-content">
-    <span class="Button-label">Raw</span>
-  </span>
-</a>
-
-        </div>
-        <div class="file-info tmp-pr-4 d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
-          <span class="mr-1">
-            <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-square color-fg-muted">
-    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
-</svg>
-          </span>
-          <a class="wb-break-all" href="#file-lab_docker-md">
-            <strong class="user-select-contain gist-blob-name css-truncate-target">
-              lab_docker.md
-            </strong>
-          </a>
-        </div>
-      </div>
-      <div id="file-lab_docker-md-readme" class="Box-body readme blob tmp-p-5 tmp-p-xl-6 gist-border-0"
-    style="overflow: auto" tabindex="0" role="region"
-    aria-label="lab_docker.md content, created by xkolyaa on 02:50PM today."
-  >
-    <article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 class="heading-element" dir="auto">Лабораторная работа №?</h1><a id="user-content-лабораторная-работа-" class="anchor" aria-label="Permalink: Лабораторная работа №?" href="#лабораторная-работа-"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Данная лабораторная работа посвящена изучению технологии работы с контейнерами.</p>
-<p dir="auto">Репозиторий:<a href="https://github.com/xkolyaa/lab_docker">https://github.com/xkolyaa/lab_docker</a></p>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">1. Установка Docker и Git</h3><a id="user-content-1-установка-docker-и-git" class="anchor" aria-label="Permalink: 1. Установка Docker и Git" href="#1-установка-docker-и-git"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:<code>sudo apt-get update &amp;&amp; sudo apt-get install -y git nano docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></p>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">2. Настройка Git и подготовка переменны</h3><a id="user-content-2-настройка-git-и-подготовка-переменны" class="anchor" aria-label="Permalink: 2. Настройка Git и подготовка переменны" href="#2-настройка-git-и-подготовка-переменны"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>export GITHUB_USERNAME="ИМЯ_ПОЛЬЗОВАТЕЛЯ"
+Команда:
+```
+export GITHUB_USERNAME="ИМЯ_ПОЛЬЗОВАТЕЛЯ"
 alias edit=nano
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">3. Скачивание исходного кода лабораторной</h3><a id="user-content-3-скачивание-исходного-кода-лабораторной" class="anchor" aria-label="Permalink: 3. Скачивание исходного кода лабораторной" href="#3-скачивание-исходного-кода-лабораторной"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>git clone https://github.com/tp-lessons/lab_docker temp_lab
+```
+
+### 3. Скачивание исходного кода лабораторной
+
+Команда:
+```
+git clone https://github.com/tp-lessons/lab_docker temp_lab
 cd temp_lab
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>Cloning into 'temp_lab'...
+```
+
+Вывод:
+```
+Cloning into 'temp_lab'...
 remote: Enumerating objects: 16, done.
 remote: Counting objects: 100% (16/16), done.
 remote: Compressing objects: 100% (12/12), done.
 remote: Total 16 (delta 1), reused 13 (delta 1), pack-reused 0 (from 0)
 Receiving objects: 100% (16/16), 5.01 KiB | 5.01 MiB/s, done.
 Resolving deltas: 100% (1/1), done
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">4. Создание локального репозитория</h3><a id="user-content-4-создание-локального-репозитория" class="anchor" aria-label="Permalink: 4. Создание локального репозитория" href="#4-создание-локального-репозитория"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>mkdir -p ~/projects/lab_docker
+```
+
+### 4. Создание локального репозитория
+
+Команда:
+```
+mkdir -p ~/projects/lab_docker
 cp -r app db LICENSE README.md ~/projects/lab_docker/
 cd ~/projects/lab_docker
 git init
 git add .
 git commit -m "Initial commit from template"
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>Initialized empty Git repository in /home/codespace/projects/lab_docker/.git/
+```
+
+Вывод:
+```
+Initialized empty Git repository in /home/codespace/projects/lab_docker/.git/
 [main (root-commit) a561ae5] Initial commit from template
  7 files changed, 228 insertions(+)
  create mode 100644 LICENSE
@@ -906,43 +59,53 @@ git commit -m "Initial commit from template"
  create mode 100644 app/requirements.txt
  create mode 100644 app/templates/index.html
  create mode 100644 db/init.sql
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">5. Связывание с GitHub</h3><a id="user-content-5-связывание-с-github" class="anchor" aria-label="Permalink: 5. Связывание с GitHub" href="#5-связывание-с-github"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>git remote add origin https://github.com{GITHUB_USERNAME}/lab_docker.git
+ ```
+### 5. Связывание с GitHub
+
+Команда:
+```
+git remote add origin https://github.com{GITHUB_USERNAME}/lab_docker.git
 git branch -M main
 git push -u origin main
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>Enumerating objects: 12, done.
+```
+
+Вывод:
+```
+Enumerating objects: 12, done.
 Counting objects: 100% (12/12), done.
 Delta compression using up to 2 threads
 Compressing objects: 100% (9/9), done.
 Writing objects: 100% (12/12), 4.04 KiB | 4.04 MiB/s, done.
 Total 12 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 To https://github.com/xkolyaa/lab_docker.git
- * [new branch]      main -&gt; main
+ * [new branch]      main -> main
 branch 'main' set up to track 'origin/main'
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">6. Создание файлов main.py и requirements.tx</h3><a id="user-content-6-создание-файлов-mainpy-и-requirementstx" class="anchor" aria-label="Permalink: 6. Создание файлов main.py и requirements.tx" href="#6-создание-файлов-mainpy-и-requirementstx"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; main.py &lt;&lt; 'EOF'
+```
+
+### 6. Создание файлов main.py и requirements.tx
+
+Команда:
+```
+cat > main.py << 'EOF'
 print("Hello, Docker!")
 EOF
 
-cat &gt; requirements.txt &lt;&lt; 'EOF'
+cat > requirements.txt << 'EOF'
 flask
 requests
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">7. Создание Dockerfile</h3><a id="user-content-7-создание-dockerfile" class="anchor" aria-label="Permalink: 7. Создание Dockerfile" href="#7-создание-dockerfile"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; Dockerfile &lt;&lt; 'EOF'
+```
+
+### 7. Создание Dockerfile
+
+Команда:
+```
+cat > Dockerfile << 'EOF'
 FROM python:3.9-slim
 
 WORKDIR /app
 
-RUN apt-get update &amp;&amp; apt-get install -y \
+RUN apt-get update && apt-get install -y \
     build-essential 
 
 COPY requirements.txt .
@@ -953,50 +116,58 @@ COPY . .
 
 CMD ["python", "main.py"]
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">8. Сборка и запуск Docker-контейнера</h3><a id="user-content-8-сборка-и-запуск-docker-контейнера" class="anchor" aria-label="Permalink: 8. Сборка и запуск Docker-контейнера" href="#8-сборка-и-запуск-docker-контейнера"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>docker build -t lab-docker .
+```
+
+### 8. Сборка и запуск Docker-контейнера
+
+Команда:
+```
+docker build -t lab-docker .
 docker run --rm -it lab-docker
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>[+] Building 52.6s (12/12) FINISHED                                                                                                         docker:default
- =&gt; [internal] load build definition from Dockerfile                                                                                                  0.0s
- =&gt; =&gt; transferring dockerfile: 253B                                                                                                                  0.0s
- =&gt; [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    1.1s
- =&gt; [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
- =&gt; [internal] load .dockerignore                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 2B                                                                                                                       0.0s
- =&gt; [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              2.2s
- =&gt; =&gt; resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; =&gt; sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08 13.88MB / 13.88MB                                                      0.4s
- =&gt; =&gt; sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d 1.29MB / 1.29MB                                                        0.4s
- =&gt; =&gt; sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508 251B / 251B                                                            0.4s
- =&gt; =&gt; sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d 29.78MB / 29.78MB                                                      0.7s
- =&gt; =&gt; extracting sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d                                                             0.8s
- =&gt; =&gt; extracting sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d                                                             0.1s
- =&gt; =&gt; extracting sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08                                                             0.5s
- =&gt; =&gt; extracting sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508                                                             0.0s
- =&gt; [internal] load build context                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 46.21kB                                                                                                                  0.0s
- =&gt; [2/6] WORKDIR /app                                                                                                                                1.5s
- =&gt; [3/6] RUN apt-get update &amp;&amp; apt-get install -y     build-essential                                                                               19.0s
- =&gt; [4/6] COPY requirements.txt .                                                                                                                     0.1s 
- =&gt; [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          5.8s 
- =&gt; [6/6] COPY . .                                                                                                                                    0.1s 
- =&gt; exporting to image                                                                                                                               22.7s 
- =&gt; =&gt; exporting layers                                                                                                                              19.6s 
- =&gt; =&gt; exporting manifest sha256:caf63ca88e97ad5ebfb49a3fe248422a05e9fb19c27914da431c9f15dd569da3                                                     0.0s 
- =&gt; =&gt; exporting config sha256:9e914c98b993fc7bf57e16f6f507f275faae104b41eaeb3feb20351b8512f7c2                                                       0.0s 
- =&gt; =&gt; exporting attestation manifest sha256:e09e76d041ae6178dd819ade5b570999cca503e1de844b01f00661d8abd85e4a                                         0.0s 
- =&gt; =&gt; exporting manifest list sha256:df95a7d1610980c48506718b9ab701a37273ebb1c8eba29846cbde2d34953f4d                                                0.0s
- =&gt; =&gt; naming to docker.io/library/lab-docker:latest                                                                                                  0.0s
- =&gt; =&gt; unpacking to docker.io/library/lab-docker:latest                                                                                               3.0s
+```
+
+Вывод:
+```
+[+] Building 52.6s (12/12) FINISHED                                                                                                         docker:default
+ => [internal] load build definition from Dockerfile                                                                                                  0.0s
+ => => transferring dockerfile: 253B                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    1.1s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                       0.0s
+ => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              2.2s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => => sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08 13.88MB / 13.88MB                                                      0.4s
+ => => sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d 1.29MB / 1.29MB                                                        0.4s
+ => => sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508 251B / 251B                                                            0.4s
+ => => sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d 29.78MB / 29.78MB                                                      0.7s
+ => => extracting sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d                                                             0.8s
+ => => extracting sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d                                                             0.1s
+ => => extracting sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08                                                             0.5s
+ => => extracting sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508                                                             0.0s
+ => [internal] load build context                                                                                                                     0.0s
+ => => transferring context: 46.21kB                                                                                                                  0.0s
+ => [2/6] WORKDIR /app                                                                                                                                1.5s
+ => [3/6] RUN apt-get update && apt-get install -y     build-essential                                                                               19.0s
+ => [4/6] COPY requirements.txt .                                                                                                                     0.1s 
+ => [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          5.8s 
+ => [6/6] COPY . .                                                                                                                                    0.1s 
+ => exporting to image                                                                                                                               22.7s 
+ => => exporting layers                                                                                                                              19.6s 
+ => => exporting manifest sha256:caf63ca88e97ad5ebfb49a3fe248422a05e9fb19c27914da431c9f15dd569da3                                                     0.0s 
+ => => exporting config sha256:9e914c98b993fc7bf57e16f6f507f275faae104b41eaeb3feb20351b8512f7c2                                                       0.0s 
+ => => exporting attestation manifest sha256:e09e76d041ae6178dd819ade5b570999cca503e1de844b01f00661d8abd85e4a                                         0.0s 
+ => => exporting manifest list sha256:df95a7d1610980c48506718b9ab701a37273ebb1c8eba29846cbde2d34953f4d                                                0.0s
+ => => naming to docker.io/library/lab-docker:latest                                                                                                  0.0s
+ => => unpacking to docker.io/library/lab-docker:latest                                                                                               3.0s
 Hello, Docker!
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">9. Настройка многоконтейнерной среды</h3><a id="user-content-9-настройка-многоконтейнерной-среды" class="anchor" aria-label="Permalink: 9. Настройка многоконтейнерной среды" href="#9-настройка-многоконтейнерной-среды"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; docker-compose.yml &lt;&lt; 'EOF'
+```
+
+### 9. Настройка многоконтейнерной среды
+
+Команда:
+```
+cat > docker-compose.yml << 'EOF'
 version: '3.8'
 
 services:
@@ -1034,40 +205,45 @@ services:
 volumes:
   db_data:
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">10. Запуск Docker Compose</h3><a id="user-content-10-запуск-docker-compose" class="anchor" aria-label="Permalink: 10. Запуск Docker Compose" href="#10-запуск-docker-compose"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>docker compose up --build
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>WARN[0000] /home/codespace/projects/lab_docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+```
+
+### 10. Запуск Docker Compose
+
+Команда:
+```
+docker compose up --build
+```
+
+Вывод:
+```
+WARN[0000] /home/codespace/projects/lab_docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
 [+] Building 0.9s (14/14) FINISHED                                                                                                                         
- =&gt; [internal] load local bake definitions                                                                                                            0.0s
- =&gt; =&gt; reading from stdin 516B                                                                                                                        0.0s
- =&gt; [internal] load build definition from Dockerfile                                                                                                  0.0s
- =&gt; =&gt; transferring dockerfile: 253B                                                                                                                  0.0s
- =&gt; [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.5s
- =&gt; [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
- =&gt; [internal] load .dockerignore                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 2B                                                                                                                       0.0s
- =&gt; [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; =&gt; resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; [internal] load build context                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 4.15kB                                                                                                                   0.0s
- =&gt; CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
- =&gt; CACHED [3/6] RUN apt-get update &amp;&amp; apt-get install -y     build-essential                                                                         0.0s
- =&gt; CACHED [4/6] COPY requirements.txt .                                                                                                              0.0s
- =&gt; CACHED [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                   0.0s
- =&gt; [6/6] COPY . .                                                                                                                                    0.0s
- =&gt; exporting to image                                                                                                                                0.1s
- =&gt; =&gt; exporting layers                                                                                                                               0.0s
- =&gt; =&gt; exporting manifest sha256:857647b872db0deae89354762400438e9931ca95039c240bcd1319e83a951432                                                     0.0s
- =&gt; =&gt; exporting config sha256:b79f2e676ae20cbdca39cc44d1b00d58da524edab6e35279bfde5368baf12abe                                                       0.0s
- =&gt; =&gt; exporting attestation manifest sha256:d5ce35c2ff56daab3bdc920525e56e7f74098588054563be5d07803f6a5209b3                                         0.0s
- =&gt; =&gt; exporting manifest list sha256:69fc0480d57988d78e1d07067b0cd670cf18f5857639c039d68aef8d68c50d7d                                                0.0s
- =&gt; =&gt; naming to docker.io/library/lab_docker-app:latest                                                                                              0.0s
- =&gt; =&gt; unpacking to docker.io/library/lab_docker-app:latest                                                                                           0.0s
- =&gt; resolving provenance for metadata file                                                                                                            0.0s
+ => [internal] load local bake definitions                                                                                                            0.0s
+ => => reading from stdin 516B                                                                                                                        0.0s
+ => [internal] load build definition from Dockerfile                                                                                                  0.0s
+ => => transferring dockerfile: 253B                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.5s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                       0.0s
+ => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => [internal] load build context                                                                                                                     0.0s
+ => => transferring context: 4.15kB                                                                                                                   0.0s
+ => CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
+ => CACHED [3/6] RUN apt-get update && apt-get install -y     build-essential                                                                         0.0s
+ => CACHED [4/6] COPY requirements.txt .                                                                                                              0.0s
+ => CACHED [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                   0.0s
+ => [6/6] COPY . .                                                                                                                                    0.0s
+ => exporting to image                                                                                                                                0.1s
+ => => exporting layers                                                                                                                               0.0s
+ => => exporting manifest sha256:857647b872db0deae89354762400438e9931ca95039c240bcd1319e83a951432                                                     0.0s
+ => => exporting config sha256:b79f2e676ae20cbdca39cc44d1b00d58da524edab6e35279bfde5368baf12abe                                                       0.0s
+ => => exporting attestation manifest sha256:d5ce35c2ff56daab3bdc920525e56e7f74098588054563be5d07803f6a5209b3                                         0.0s
+ => => exporting manifest list sha256:69fc0480d57988d78e1d07067b0cd670cf18f5857639c039d68aef8d68c50d7d                                                0.0s
+ => => naming to docker.io/library/lab_docker-app:latest                                                                                              0.0s
+ => => unpacking to docker.io/library/lab_docker-app:latest                                                                                           0.0s
+ => resolving provenance for metadata file                                                                                                            0.0s
 [+] up 5/5
  ✔ Image lab_docker-app       Built                                                                                                                    0.9s
  ✔ Network lab_docker_default Created                                                                                                                  0.1s
@@ -1097,7 +273,7 @@ mysql_db  | 2026-06-01T14:01:11.139543Z 0 [Warning] [MY-011810] [Server] Insecur
 mysql_db  | 2026-06-01T14:01:11.158924Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
 mysql_db  | 2026-06-01T14:01:11.159610Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
 mysql_db  | 2026-06-01 14:01:11+00:00 [Note] [Entrypoint]: Temporary server started.
-mysql_db  | '/var/lib/mysql/mysql.sock' -&gt; '/var/run/mysqld/mysqld.sock'
+mysql_db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
 mysql_db  | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
 mysql_db  | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
 mysql_db  | Warning: Unable to load '/usr/share/zoneinfo/leapseconds' as time zone. Skipping it.
@@ -1127,80 +303,110 @@ mysql_db  | 2026-06-01T14:01:20.016625Z 0 [System] [MY-010931] [Server] /usr/sbi
 Container mysql_db Healthy 
 lab_docker  | Hello, Docker!
 lab_docker exited with code 0
-</code></pre>
-<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Часть I (Docker)</h2><a id="user-content-часть-i-docker" class="anchor" aria-label="Permalink: Часть I (Docker)" href="#часть-i-docker"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">1. Создание Dockerfile для приложения</h3><a id="user-content-1-создание-dockerfile-для-приложения" class="anchor" aria-label="Permalink: 1. Создание Dockerfile для приложения" href="#1-создание-dockerfile-для-приложения"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; Dockerfile &lt;&lt; 'EOF'
+```
+
+## Часть I (Docker)
+
+### 1. Создание Dockerfile для приложения
+
+Команда:
+```
+cat > Dockerfile << 'EOF'
 FROM python:3.9-slim
 WORKDIR /app
-RUN apt-get update &amp;&amp; apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ .
 CMD ["python", "main.py"]
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">2. Сборка и запуск контейнера с приложением</h3><a id="user-content-2-сборка-и-запуск-контейнера-с-приложением" class="anchor" aria-label="Permalink: 2. Сборка и запуск контейнера с приложением" href="#2-сборка-и-запуск-контейнера-с-приложением"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>docker build -t lab-docker-app .
+```
+
+### 2. Сборка и запуск контейнера с приложением
+
+Команда:
+```
+docker build -t lab-docker-app .
 docker run -d --name my_web_app -p 5000:5000 lab-docker-app
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>[+] Building 50.6s (11/11) FINISHED                                                                                                         docker:default
- =&gt; [internal] load build definition from Dockerfile                                                                                                  0.0s
- =&gt; =&gt; transferring dockerfile: 247B                                                                                                                  0.0s
- =&gt; [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.3s
- =&gt; [internal] load .dockerignore                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 2B                                                                                                                       0.0s
- =&gt; [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; =&gt; resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; [internal] load build context                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 204B                                                                                                                     0.0s
- =&gt; CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
- =&gt; [3/6] RUN apt-get update &amp;&amp; apt-get install -y build-essential                                                                                   20.2s
- =&gt; [4/6] COPY app/requirements.txt .                                                                                                                 0.1s 
- =&gt; [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          6.0s 
- =&gt; [6/6] COPY app/ .                                                                                                                                 0.1s 
- =&gt; exporting to image                                                                                                                               23.7s 
- =&gt; =&gt; exporting layers                                                                                                                              19.9s 
- =&gt; =&gt; exporting manifest sha256:b275d991a8d8957205bcad4fadf2a6ee1ac749035ab28be4c54a0ea4adbf71c2                                                     0.0s 
- =&gt; =&gt; exporting config sha256:643da1d4a6aad29b269bf33beba72e8b83164868442e6b1a304dc897ab663923                                                       0.0s 
- =&gt; =&gt; exporting attestation manifest sha256:abb6eb3449ae3025a0ad7362208b9b6dbb972bea21712d819face95a45a6da68                                         0.0s 
- =&gt; =&gt; exporting manifest list sha256:3a350611885810848573ed36de12e9a9454db35b456b6a46b3860f1fb76f97e2                                                0.0s
- =&gt; =&gt; naming to docker.io/library/lab-docker-app:latest                                                                                              0.0s
- =&gt; =&gt; unpacking to docker.io/library/lab-docker-app:latest                                                                                           3.7s
+```
+
+Вывод:
+```
+[+] Building 50.6s (11/11) FINISHED                                                                                                         docker:default
+ => [internal] load build definition from Dockerfile                                                                                                  0.0s
+ => => transferring dockerfile: 247B                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.3s
+ => [internal] load .dockerignore                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                       0.0s
+ => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => [internal] load build context                                                                                                                     0.0s
+ => => transferring context: 204B                                                                                                                     0.0s
+ => CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
+ => [3/6] RUN apt-get update && apt-get install -y build-essential                                                                                   20.2s
+ => [4/6] COPY app/requirements.txt .                                                                                                                 0.1s 
+ => [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          6.0s 
+ => [6/6] COPY app/ .                                                                                                                                 0.1s 
+ => exporting to image                                                                                                                               23.7s 
+ => => exporting layers                                                                                                                              19.9s 
+ => => exporting manifest sha256:b275d991a8d8957205bcad4fadf2a6ee1ac749035ab28be4c54a0ea4adbf71c2                                                     0.0s 
+ => => exporting config sha256:643da1d4a6aad29b269bf33beba72e8b83164868442e6b1a304dc897ab663923                                                       0.0s 
+ => => exporting attestation manifest sha256:abb6eb3449ae3025a0ad7362208b9b6dbb972bea21712d819face95a45a6da68                                         0.0s 
+ => => exporting manifest list sha256:3a350611885810848573ed36de12e9a9454db35b456b6a46b3860f1fb76f97e2                                                0.0s
+ => => naming to docker.io/library/lab-docker-app:latest                                                                                              0.0s
+ => => unpacking to docker.io/library/lab-docker-app:latest                                                                                           3.7s
 1c4792fb912f38624c13695ca182964855faacb8aefb0166c2d31b2ae2562205
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">3. Копирование файла README.md внутрь контейнера</h3><a id="user-content-3-копирование-файла-readmemd-внутрь-контейнера" class="anchor" aria-label="Permalink: 3. Копирование файла README.md внутрь контейнера" href="#3-копирование-файла-readmemd-внутрь-контейнера"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>docker run -d --name my_web_app lab-docker-app sleep infinity
+```
+
+### 3. Копирование файла README.md внутрь контейнера
+
+Команда:
+```
+docker run -d --name my_web_app lab-docker-app sleep infinity
 docker cp README.md my_web_app:/home/
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>Successfully copied 4.44kB (transferred 6.14kB) to my_web_app:/home/
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">4. Подключение к терминалу контейнера в интерактивном режиме</h3><a id="user-content-4-подключение-к-терминалу-контейнера-в-интерактивном-режиме" class="anchor" aria-label="Permalink: 4. Подключение к терминалу контейнера в интерактивном режиме" href="#4-подключение-к-терминалу-контейнера-в-интерактивном-режиме"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>$ docker exec -it my_web_app sh
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">5. Проверка наличия скопированного айла</h3><a id="user-content-5-проверка-наличия-скопированного-айла" class="anchor" aria-label="Permalink: 5. Проверка наличия скопированного айла" href="#5-проверка-наличия-скопированного-айла"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>ls -la /home/
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>total 16
+```
+
+Вывод:
+```
+Successfully copied 4.44kB (transferred 6.14kB) to my_web_app:/home/
+```
+
+### 4. Подключение к терминалу контейнера в интерактивном режиме
+
+Команда:
+```
+$ docker exec -it my_web_app sh
+```
+
+### 5. Проверка наличия скопированного айла
+
+Команда:
+```
+ls -la /home/
+```
+
+Вывод:
+```
+total 16
 drwxr-xr-x 1 root root 4096 Jun  1 14:08 .
 drwxr-xr-x 1 root root 4096 Jun  1 14:08 ..
 -rw-r--r-- 1 1000 1000 4442 Jun  1 13:40 README.md
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">6. Выход из контейнера и его остановка</h3><a id="user-content-6-выход-из-контейнера-и-его-остановка" class="anchor" aria-label="Permalink: 6. Выход из контейнера и его остановка" href="#6-выход-из-контейнера-и-его-остановка"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда: <code>exit</code></p>
-<p dir="auto">Команда: <code>docker stop my_web_app &amp;&amp; docker rm my_web_app</code></p>
-<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Часть II. Настройка многоконтейнерной среды</h2><a id="user-content-часть-ii-настройка-многоконтейнерной-среды" class="anchor" aria-label="Permalink: Часть II. Настройка многоконтейнерной среды" href="#часть-ii-настройка-многоконтейнерной-среды"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">1. Создание файла docker-compose.yml</h3><a id="user-content-1-создание-файла-docker-composeyml" class="anchor" aria-label="Permalink: 1. Создание файла docker-compose.yml" href="#1-создание-файла-docker-composeyml"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; docker-compose.yml &lt;&lt; 'EOF'
+```
+
+### 6. Выход из контейнера и его остановка
+
+Команда: ```exit```
+
+Команда: ```docker stop my_web_app && docker rm my_web_app```
+
+
+## Часть II. Настройка многоконтейнерной среды
+
+### 1. Создание файла docker-compose.yml
+
+Команда:
+```
+cat > docker-compose.yml << 'EOF'
 services:
   app:
     build: . 
@@ -1240,18 +446,24 @@ services:
 volumes:
   db_data:
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">2. Обновление списка зависимостей приложения</h3><a id="user-content-2-обновление-списка-зависимостей-приложения" class="anchor" aria-label="Permalink: 2. Обновление списка зависимостей приложения" href="#2-обновление-списка-зависимостей-приложения"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; app/requirements.txt &lt;&lt; 'EOF'
+```
+
+### 2. Обновление списка зависимостей приложения
+
+Команда:
+```
+cat > app/requirements.txt << 'EOF'
 flask
 requests
 mysql-connector-python
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">3. Интеграция Flask с базой данных</h3><a id="user-content-3-интеграция-flask-с-базой-данных" class="anchor" aria-label="Permalink: 3. Интеграция Flask с базой данных" href="#3-интеграция-flask-с-базой-данных"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>cat &gt; app/main.py &lt;&lt; 'EOF'
+```
+
+### 3. Интеграция Flask с базой данных
+
+Команда:
+```
+cat > app/main.py << 'EOF'
 import os
 import time
 from flask import Flask, request, render_template_string, redirect, url_for
@@ -1262,7 +474,7 @@ app = Flask(__name__)
 
 def get_db_connection():
     retries = 5
-    while retries &gt; 0:
+    while retries > 0:
         try:
             connection = mysql.connector.connect(
                 host=os.getenv('DB_HOST', 'db'),
@@ -1322,26 +534,26 @@ def index():
     conn.close()
 
     html = '''
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Lab Docker&lt;/title&gt;
-        &lt;meta charset="utf-8"&gt;
-    &lt;/head&gt;
-    &lt;body style="font-family: Arial; margin: 40px; background-color: #f4f4f9;"&gt;
-        &lt;h2&gt;Список задач (Лабораторная Docker)&lt;/h2&gt;
-        &lt;form method="POST" style="margin-bottom: 20px;"&gt;
-            &lt;input type="text" name="task" placeholder="Новая задача" required style="padding: 8px; width: 250px;"&gt;
-            &lt;button type="submit" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; cursor: pointer;"&gt;Добавить&lt;/button&gt;
-        &lt;/form&gt;
-        &lt;h3&gt;Текущие задачи в БД:&lt;/h3&gt;
-        &lt;ul&gt;
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Lab Docker</title>
+        <meta charset="utf-8">
+    </head>
+    <body style="font-family: Arial; margin: 40px; background-color: #f4f4f9;">
+        <h2>Список задач (Лабораторная Docker)</h2>
+        <form method="POST" style="margin-bottom: 20px;">
+            <input type="text" name="task" placeholder="Новая задача" required style="padding: 8px; width: 250px;">
+            <button type="submit" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; cursor: pointer;">Добавить</button>
+        </form>
+        <h3>Текущие задачи в БД:</h3>
+        <ul>
         {% for task in tasks %}
-            &lt;li style="margin: 5px 0; font-size: 16px;"&gt;&lt;b&gt;{{ task }}&lt;/b&gt;&lt;/li&gt;
+            <li style="margin: 5px 0; font-size: 16px;"><b>{{ task }}</b></li>
         {% endfor %}
-        &lt;/ul&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
+        </ul>
+    </body>
+    </html>
     '''
     return render_template_string(html, tasks=tasks)
 
@@ -1350,46 +562,51 @@ if __name__ == '__main__':
     init_db()
     app.run(host='0.0.0.0', port=5000)
 EOF
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">4. Сборка и запуск многоконтейнерной среды</h3><a id="user-content-4-сборка-и-запуск-многоконтейнерной-среды" class="anchor" aria-label="Permalink: 4. Сборка и запуск многоконтейнерной среды" href="#4-сборка-и-запуск-многоконтейнерной-среды"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>docker compose down -v
+```
+
+### 4. Сборка и запуск многоконтейнерной среды
+
+Команда:
+```
+docker compose down -v
 docker compose build --no-cache
 docker compose up
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>[+] down 4/4
+```
+
+Вывод:
+```
+[+] down 4/4
  ✔ Container lab_docker_app_container Removed                                                                                                          0.0s
  ✔ Container mysql_db_container       Removed                                                                                                          0.0s
  ✔ Volume lab_docker_db_data          Removed                                                                                                          0.0s
  ✔ Network lab_docker_default         Removed                                                                                                          0.1s
 [+] Building 65.6s (14/14) FINISHED                                                                                                                        
- =&gt; [internal] load local bake definitions                                                                                                            0.0s
- =&gt; =&gt; reading from stdin 540B                                                                                                                        0.0s
- =&gt; [internal] load build definition from Dockerfile                                                                                                  0.0s
- =&gt; =&gt; transferring dockerfile: 247B                                                                                                                  0.0s
- =&gt; [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.5s
- =&gt; [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
- =&gt; [internal] load .dockerignore                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 2B                                                                                                                       0.0s
- =&gt; [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; =&gt; resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
- =&gt; [internal] load build context                                                                                                                     0.0s
- =&gt; =&gt; transferring context: 235B                                                                                                                     0.0s
- =&gt; CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
- =&gt; [3/6] RUN apt-get update &amp;&amp; apt-get install -y build-essential                                                                                   22.2s
- =&gt; [4/6] COPY app/requirements.txt .                                                                                                                 0.1s 
- =&gt; [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          8.6s 
- =&gt; [6/6] COPY app/ .                                                                                                                                 0.1s 
- =&gt; exporting to image                                                                                                                               33.6s 
- =&gt; =&gt; exporting layers                                                                                                                              22.9s 
- =&gt; =&gt; exporting manifest sha256:5f8b213476c47a2c065de97b99f4367495a8022f41bc719c8d4e062901a1cacd                                                     0.0s 
- =&gt; =&gt; exporting config sha256:e31c27221d1d753eabbf9d145e077b93eea48562e6f1b23a794a6ebd83ff62bf                                                       0.0s 
- =&gt; =&gt; exporting attestation manifest sha256:ebcf6009f8a659c20cd43edbc951738b5c5b4aa79e44b5cbb1af98fae8d81944                                         0.0s 
- =&gt; =&gt; exporting manifest list sha256:b0b51c0605de584ff02c3126c435ce4d7400b3fbb3128caf53bc023aea3f2563                                                0.0s
- =&gt; =&gt; naming to docker.io/library/lab_docker-app:latest                                                                                              0.0s
- =&gt; =&gt; unpacking to docker.io/library/lab_docker-app:latest                                                                                          10.5s
- =&gt; resolving provenance for metadata file                                                                                                            0.1s
+ => [internal] load local bake definitions                                                                                                            0.0s
+ => => reading from stdin 540B                                                                                                                        0.0s
+ => [internal] load build definition from Dockerfile                                                                                                  0.0s
+ => => transferring dockerfile: 247B                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                    0.5s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                       0.0s
+ => [1/6] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b                              0.0s
+ => [internal] load build context                                                                                                                     0.0s
+ => => transferring context: 235B                                                                                                                     0.0s
+ => CACHED [2/6] WORKDIR /app                                                                                                                         0.0s
+ => [3/6] RUN apt-get update && apt-get install -y build-essential                                                                                   22.2s
+ => [4/6] COPY app/requirements.txt .                                                                                                                 0.1s 
+ => [5/6] RUN pip install --no-cache-dir -r requirements.txt                                                                                          8.6s 
+ => [6/6] COPY app/ .                                                                                                                                 0.1s 
+ => exporting to image                                                                                                                               33.6s 
+ => => exporting layers                                                                                                                              22.9s 
+ => => exporting manifest sha256:5f8b213476c47a2c065de97b99f4367495a8022f41bc719c8d4e062901a1cacd                                                     0.0s 
+ => => exporting config sha256:e31c27221d1d753eabbf9d145e077b93eea48562e6f1b23a794a6ebd83ff62bf                                                       0.0s 
+ => => exporting attestation manifest sha256:ebcf6009f8a659c20cd43edbc951738b5c5b4aa79e44b5cbb1af98fae8d81944                                         0.0s 
+ => => exporting manifest list sha256:b0b51c0605de584ff02c3126c435ce4d7400b3fbb3128caf53bc023aea3f2563                                                0.0s
+ => => naming to docker.io/library/lab_docker-app:latest                                                                                              0.0s
+ => => unpacking to docker.io/library/lab_docker-app:latest                                                                                          10.5s
+ => resolving provenance for metadata file                                                                                                            0.1s
 [+] build 1/1
  ✔ Image lab_docker-app Built                                                                                                                         65.7s
 [+] up 4/4
@@ -1420,7 +637,7 @@ mysql_db_container  | 2026-06-01T14:38:54.908706Z 0 [Warning] [MY-011810] [Serve
 mysql_db_container  | 2026-06-01T14:38:54.966839Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
 mysql_db_container  | 2026-06-01T14:38:54.966928Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
 mysql_db_container  | 2026-06-01 14:38:54+00:00 [Note] [Entrypoint]: Temporary server started.
-mysql_db_container  | '/var/lib/mysql/mysql.sock' -&gt; '/var/run/mysqld/mysqld.sock'
+mysql_db_container  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
 Container mysql_db_container Healthy 
 mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
 mysql_db_container  | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
@@ -1461,15 +678,20 @@ lab_docker_app_container  |  * Running on all addresses (0.0.0.0)
 lab_docker_app_container  |  * Running on http://127.0.0.1:5000
 lab_docker_app_container  |  * Running on http://172.18.0.3:5000
 lab_docker_app_container  | Press CTRL+C to quit
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">5. Фиксация изменений</h3><a id="user-content-5-фиксация-изменений" class="anchor" aria-label="Permalink: 5. Фиксация изменений" href="#5-фиксация-изменений"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<p dir="auto">Команда:</p>
-<pre><code>git add .
+```
+
+### 5. Фиксация изменений
+
+Команда:
+```
+git add .
 git commit -m "Complete Part 2 of Docker lab: integrate Flask with MySQL via compose"
 git push origin main
-</code></pre>
-<p dir="auto">Вывод:</p>
-<pre><code>[main b8a6e7f] Complete Part 1 and Part 2 of Docker lab
+```
+
+Вывод:
+```
+[main b8a6e7f] Complete Part 1 and Part 2 of Docker lab
  4 files changed, 143 insertions(+)
  create mode 100644 Dockerfile
  create mode 100644 app/main.py
@@ -1481,224 +703,16 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (7/7), 2.65 KiB | 2.65 MiB/s, done.
 Total 7 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 To https://github.com/xkolyaa/lab_docker.git
-   a561ae5..b8a6e7f  main -&gt; main
-</code></pre>
-<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">6. Тестирование работы связки "Пользователь — Приложение — БД"</h3><a id="user-content-6-тестирование-работы-связки-пользователь--приложение--бд" class="anchor" aria-label="Permalink: 6. Тестирование работы связки &quot;Пользователь — Приложение — БД&quot;" href="#6-тестирование-работы-связки-пользователь--приложение--бд"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-<ol dir="auto">
-<li>После успешного запуска команды docker compose up интерфейс приложения стал доступен на порту 5000.
-При первом обращении база данных успешно инициализировалась, отображая пустой список задач:</li>
-</ol>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/264804767/601007425-1a755de6-aa3f-4aaa-8fb2-5cf70bb53fc0.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjc5MDgsIm5iZiI6MTc4MDMyNzYwOCwicGF0aCI6Ii8yNjQ4MDQ3NjcvNjAxMDA3NDI1LTFhNzU1ZGU2LWFhM2YtNGFhYS04ZmIyLTVjZjcwYmI1M2ZjMC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDYwMVQxNTI2NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zN2YxYmYwYmYxNTAyNzhiMGIxYTA3YTliOTZkYTczNmZmNDAyODUxYmI1OGU3MjFjNDg0MGE5OTNlODEzYjk3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.CyePRNkldyZqcs-LCAxjpjRW-myzR5CpXL61VbesXm0"><img width="1521" height="996" alt="image" src="https://private-user-images.githubusercontent.com/264804767/601007425-1a755de6-aa3f-4aaa-8fb2-5cf70bb53fc0.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjc5MDgsIm5iZiI6MTc4MDMyNzYwOCwicGF0aCI6Ii8yNjQ4MDQ3NjcvNjAxMDA3NDI1LTFhNzU1ZGU2LWFhM2YtNGFhYS04ZmIyLTVjZjcwYmI1M2ZjMC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDYwMVQxNTI2NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zN2YxYmYwYmYxNTAyNzhiMGIxYTA3YTliOTZkYTczNmZmNDAyODUxYmI1OGU3MjFjNDg0MGE5OTNlODEzYjk3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.CyePRNkldyZqcs-LCAxjpjRW-myzR5CpXL61VbesXm0" style="max-width: 100%; height: auto; max-height: 996px;; aspect-ratio: 1521 / 996; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
-<ol start="2" dir="auto">
-<li>Проверка отправки данных пользователем. После ввода новой задачи и нажатия «Добавить», Flask отправило запрос в контейнер MySQL.
-Данные были успешно записаны, извлечены и выведены на экран:</li>
-</ol>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/264804767/601008426-7c035399-27b4-4249-a007-4f94c20d292c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjc5MDgsIm5iZiI6MTc4MDMyNzYwOCwicGF0aCI6Ii8yNjQ4MDQ3NjcvNjAxMDA4NDI2LTdjMDM1Mzk5LTI3YjQtNDI0OS1hMDA3LTRmOTRjMjBkMjkyYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDYwMVQxNTI2NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MjVjNzhlMmQ1ODE4OGZjYjUyNDg0MDQ5MDA0YzA0ODViYzgxMWI4Zjc1MWJmZjZkNjJkMThmMTkwZDlmNGM3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.KMej-fxbykYXS-jvpy3mfT9rygVUWqRlmbnqMm_MKqQ"><img width="1521" height="989" alt="image" src="https://private-user-images.githubusercontent.com/264804767/601008426-7c035399-27b4-4249-a007-4f94c20d292c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjc5MDgsIm5iZiI6MTc4MDMyNzYwOCwicGF0aCI6Ii8yNjQ4MDQ3NjcvNjAxMDA4NDI2LTdjMDM1Mzk5LTI3YjQtNDI0OS1hMDA3LTRmOTRjMjBkMjkyYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDYwMVQxNTI2NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MjVjNzhlMmQ1ODE4OGZjYjUyNDg0MDQ5MDA0YzA0ODViYzgxMWI4Zjc1MWJmZjZkNjJkMThmMTkwZDlmNGM3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.KMej-fxbykYXS-jvpy3mfT9rygVUWqRlmbnqMm_MKqQ" style="max-width: 100%; height: auto; max-height: 989px;; aspect-ratio: 1521 / 989; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
-</article>
-  </div>
+   a561ae5..b8a6e7f  main -> main
+```
+### 6. Тестирование работы связки "Пользователь — Приложение — БД"
 
-  </div>
+1. После успешного запуска команды docker compose up интерфейс приложения стал доступен на порту 5000. 
+При первом обращении база данных успешно инициализировалась, отображая пустой список задач:
 
-</div>
+<img width="1521" height="996" alt="image" src="https://gist.github.com/user-attachments/assets/1a755de6-aa3f-4aaa-8fb2-5cf70bb53fc0" />
 
+2. Проверка отправки данных пользователем. После ввода новой задачи и нажатия «Добавить», Flask отправило запрос в контейнер MySQL. 
+Данные были успешно записаны, извлечены и выведены на экран:
 
-        <a name="comments"></a>
-        <div class="js-quote-selection-container" data-quote-markdown=".js-comment-body">
-          <div class="js-discussion "
-          >
-            <div class="tmp-ml-md-6 tmp-pl-md-3 ml-0 pl-0">
-              
-
-
-
-<!-- Rendered timeline since 2026-06-01 07:56:57 -->
-<div id="partial-timeline-marker"
-      class="js-timeline-marker js-updatable-content"
-      data-last-modified="Mon, 01 Jun 2026 14:56:57 GMT"
-      >
-</div>
-
-            </div>
-
-            <div class="discussion-timeline-actions">
-              <div data-view-component="true" class="tmp-mt-3 flash flash-warn">
-  
-    <a rel="nofollow" class="btn btn-primary" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="f45cc1e8ee35df1abadb1f18288a59951d00784c77d02ff8ecb73dc7447c2324" href="/join?source=comment-gist">Sign up for free</a>
-    <strong>to join this conversation on GitHub</strong>.
-    Already have an account?
-    <a rel="nofollow" class="Link--inTextBlock" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/xkolyaa/088678af8cd6d7d55103791b700adb5b&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0322eab2591bd5ec3c8fa19f9feda3c2f3339f8034917278f9750815b77aea27" data-test-selector="comments-sign-in-link" href="/login?return_to=https%3A%2F%2Fgist.github.com%2Fxkolyaa%2F088678af8cd6d7d55103791b700adb5b">Sign in to comment</a>
-
-
-  
-</div>
-            </div>
-          </div>
-        </div>
-</div>
-  </div>
-</div><!-- /.container -->
-
-    </main>
-  </div>
-
-  </div>
-
-          <footer class="footer tmp-pt-7 tmp-pb-6 f6 color-fg-muted color-border-subtle p-responsive" role="contentinfo" >
-  <h2 class='sr-only'>Footer</h2>
-
-  
-
-
-  <div class="d-flex flex-justify-center flex-items-center flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap">
-    <div class="d-flex flex-items-center flex-shrink-0 mx-2">
-      <a aria-label="GitHub Homepage" class="footer-octicon mr-2" href="https://github.com">
-        <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
-    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
-</svg>
-</a>
-      <span>
-        &copy; 2026 GitHub,&nbsp;Inc.
-      </span>
-    </div>
-
-    <nav aria-label="Footer">
-      <h3 class="sr-only" id="sr-footer-heading">Footer navigation</h3>
-
-      <ul class="list-style-none d-flex flex-justify-center flex-wrap mb-2 mb-lg-0" aria-labelledby="sr-footer-heading">
-
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true" class="Link--secondary Link">Terms</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true" class="Link--secondary Link">Privacy</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security" data-view-component="true" class="Link--secondary Link">Security</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}" href="https://www.githubstatus.com/" data-view-component="true" class="Link--secondary Link">Status</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to community&quot;,&quot;label&quot;:&quot;text:community&quot;}" href="https://github.community/" data-view-component="true" class="Link--secondary Link">Community</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to docs&quot;,&quot;label&quot;:&quot;text:docs&quot;}" href="https://docs.github.com/" data-view-component="true" class="Link--secondary Link">Docs</a>
-          </li>
-
-          <li class="mx-2">
-            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}" href="https://support.github.com?tags=dotcom-footer" data-view-component="true" class="Link--secondary Link">Contact</a>
-          </li>
-
-          <li class="mx-2" >
-  <cookie-consent-link>
-    <button
-      type="button"
-      class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent"
-      data-action="click:cookie-consent-link#showConsentManagement"
-      data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;cookies&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;cookies_link_subfooter_footer&quot;}"
-    >
-       Manage cookies
-    </button>
-  </cookie-consent-link>
-</li>
-
-<li class="mx-2">
-  <cookie-consent-link>
-    <button
-      type="button"
-      class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent text-left"
-      data-action="click:cookie-consent-link#showConsentManagement"
-      data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;dont_share_info&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;dont_share_info_link_subfooter_footer&quot;}"
-    >
-      Do not share my personal information
-    </button>
-  </cookie-consent-link>
-</li>
-
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-
-
-    <ghcc-consent id="ghcc" class="position-fixed bottom-0 left-0" style="z-index: 999999"
-      data-locale="en"
-      data-initial-cookie-consent-allowed=""
-      data-cookie-consent-required="true"
-    ></ghcc-consent>
-
-
-
-
-  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden>
-    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-    </button>
-    You can’t perform that action at this time.
-  </div>
-
-    <template id="site-details-dialog">
-  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open>
-    <summary role="button" aria-label="Close dialog"></summary>
-    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
-      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
-        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-      </button>
-      <div class="octocat-spinner tmp-my-6 js-details-dialog-spinner"></div>
-    </details-dialog>
-  </details>
-</template>
-
-    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;">
-  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;">
-  </div>
-</div>
-
-    <template id="snippet-clipboard-copy-button">
-  <div class="zeroclipboard-container position-absolute right-0 top-0">
-    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn js-clipboard-copy m-2 p-0" data-copy-feedback="Copied!" data-tooltip-direction="w">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2 tmp-m-2">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2 tmp-m-2">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
-  </div>
-</template>
-<template id="snippet-clipboard-copy-button-unpositioned">
-  <div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w">
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
-  </div>
-</template>
-
-
-
-
-    </div>
-    <div id="js-global-screen-reader-notice" class="sr-only mt-n1" aria-live="polite" aria-atomic="true" ></div>
-    <div id="js-global-screen-reader-notice-assertive" class="sr-only mt-n1" aria-live="assertive" aria-atomic="true"></div>
-  </body>
-</html>
-
+<img width="1521" height="989" alt="image" src="https://gist.github.com/user-attachments/assets/7c035399-27b4-4249-a007-4f94c20d292c" />
