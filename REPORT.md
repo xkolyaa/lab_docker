@@ -1,8 +1,8 @@
-# Лабораторная работа №?
+# Лабораторная работа №8
 
 Данная лабораторная работа посвящена изучению технологии работы с контейнерами.
 
-Репозиторий:https://github.com/xkolyaa/lab_docker
+Репозиторий: https://github.com/xkolyaa/lab_docker
 
 ### 1. Установка Docker и Git
 
@@ -82,15 +82,12 @@ To https://github.com/xkolyaa/lab_docker.git
 branch 'main' set up to track 'origin/main'
 ```
 
-### 6. Создание файлов main.py и requirements.tx
+### 6. Создание файлов main.py и requirements.txt
 
 Команда:
 ```
 cat > main.py << 'EOF'
-import time
 print("Hello, Docker!")
-while True:
-    time.sleep(10)
 EOF
 
 cat > requirements.txt << 'EOF'
@@ -305,6 +302,7 @@ mysql_db  | 2026-06-01T14:01:20.016586Z 0 [System] [MY-011323] [Server] X Plugin
 mysql_db  | 2026-06-01T14:01:20.016625Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.46'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
 Container mysql_db Healthy 
 lab_docker  | Hello, Docker!
+lab_docker exited with code 0
 ```
 
 ## Часть I (Docker)
@@ -380,7 +378,7 @@ Successfully copied 4.44kB (transferred 6.14kB) to my_web_app:/home/
 $ docker exec -it my_web_app sh
 ```
 
-### 5. Проверка наличия скопированного айла
+### 5. Проверка наличия скопированного файла
 
 Команда:
 ```
@@ -673,7 +671,7 @@ To https://github.com/xkolyaa/lab_docker.git
 ```
 ### 6. Тестирование работы связки "Пользователь — Приложение — БД"
 
-1. После успешного запуска команды docker compose up интерфейс приложения стал доступен на порту 5000. 
+1. После успешного запуска команды docker compose up интерфейс приложения стал доступен на порту 5001. 
 При первом обращении база данных успешно инициализировалась, отображая пустой список задач:
 
 <img width="1477" height="734" alt="image" src="https://gist.github.com/user-attachments/assets/620beb8b-1408-4f0d-81ef-925f6641b665" />
