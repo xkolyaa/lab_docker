@@ -178,20 +178,20 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_HOST=db
-      - DB_USER=db_user
-      - DB_PASSWORD=secret
-      - DB_NAME=lab_db
+      - DB_HOST=$DB_HOST
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_NAME
 
   db:
     image: mysql:8.0
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: secret_root_pass
-      MYSQL_DATABASE: lab_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
     ports:
       - "3306:3306"
     volumes:
@@ -417,20 +417,20 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_HOST=db
-      - DB_USER=user
-      - DB_PASSWORD=password
-      - DB_NAME=testdb
+      - DB_HOST=$DB_HOST
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_NAME
 
   db:
     image: mariadb:10.11
     container_name: mysql_db
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: rootpassword
-      MARIADB_DATABASE: testdb
-      MARIADB_USER: user
-      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MARIADB_DATABASE: $DB_NAME
+      MARIADB_USER: $DB_USER
+      MARIADB_PASSWORD: $DB_PASSWORD
     ports:
       - "3306:3306"
     volumes:
